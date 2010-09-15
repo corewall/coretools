@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<corewall_data>
+    <section offset="9.69">
+        <id>simple.csv-0</id>
+        <depth_unit>top</depth_unit>
+        <field localid="0" name="density" units="density"/>
+        <depth>0.0</depth>
+        <sensor id="0">1.56</sensor>
+        <depth>0.010000229</depth>
+        <sensor id="0">1.62</sensor>
+        <depth>0.010000229</depth>
+        <sensor id="0">1.6</sensor>
+        <depth>0.020000458</depth>
+        <sensor id="0">1.6</sensor>
+        <depth>0.020000458</depth>
+        <sensor id="0">1.58</sensor>
+        <depth>0.030000687</depth>
+        <sensor id="0">1.56</sensor>
+        <depth>0.030000687</depth>
+        <sensor id="0">1.59</sensor>
+        <depth>0.03999996</depth>
+        <sensor id="0">1.65</sensor>
+        <depth>0.03999996</depth>
+        <sensor id="0">1.71</sensor>
+        <depth>0.05000019</depth>
+        <sensor id="0">1.77</sensor>
+        <depth>0.05000019</depth>
+        <sensor id="0">1.76</sensor>
+        <depth>0.06000042</depth>
+        <sensor id="0">1.89</sensor>
+        <depth>0.06000042</depth>
+        <sensor id="0">1.98</sensor>
+        <depth>0.07000065</depth>
+        <sensor id="0">1.84</sensor>
+        <depth>0.07000065</depth>
+        <sensor id="0">1.87</sensor>
+        <depth>0.08000088</depth>
+        <sensor id="0">1.87</sensor>
+        <depth>0.08000088</depth>
+        <sensor id="0">1.91</sensor>
+        <depth>0.09000015</depth>
+        <sensor id="0">1.88</sensor>
+        <depth>0.09000015</depth>
+        <sensor id="0">1.96</sensor>
+        <depth>0.10000038</depth>
+        <sensor id="0">1.93</sensor>
+        <depth>0.10000038</depth>
+        <sensor id="0">1.86</sensor>
+        <depth>0.11000061</depth>
+        <sensor id="0">1.86</sensor>
+        <depth>0.11000061</depth>
+        <sensor id="0">1.93</sensor>
+        <depth>0.12000084</depth>
+        <sensor id="0">1.92</sensor>
+        <depth>0.12000084</depth>
+        <sensor id="0">1.9</sensor>
+        <depth>0.13000011</depth>
+        <sensor id="0">1.85</sensor>
+        <depth>0.13000011</depth>
+        <sensor id="0">1.85</sensor>
+        <depth>0.14000034</depth>
+        <sensor id="0">1.88</sensor>
+        <depth>0.14000034</depth>
+        <sensor id="0">1.86</sensor>
+        <depth>0.15000057</depth>
+        <sensor id="0">1.89</sensor>
+        <depth>0.15000057</depth>
+        <sensor id="0">1.86</sensor>
+        <depth>0.1600008</depth>
+        <sensor id="0">1.88</sensor>
+        <depth>0.1600008</depth>
+        <sensor id="0">1.91</sensor>
+        <depth>0.17000008</depth>
+        <sensor id="0">1.94</sensor>
+        <depth>0.17000008</depth>
+        <sensor id="0">1.98</sensor>
+        <depth>0.1800003</depth>
+        <sensor id="0">1.9</sensor>
+        <depth>0.1800003</depth>
+        <sensor id="0">2.05</sensor>
+        <depth>0.19000053</depth>
+        <sensor id="0">1.98</sensor>
+        <depth>0.19000053</depth>
+        <sensor id="0">1.98</sensor>
+        <depth>0.20000076</depth>
+        <sensor id="0">1.96</sensor>
+        <depth>0.20000076</depth>
+        <sensor id="0">1.97</sensor>
+        <depth>0.21000004</depth>
+        <sensor id="0">1.93</sensor>
+        <depth>0.21000004</depth>
+        <sensor id="0">1.93</sensor>
+        <depth>0.22000027</depth>
+        <sensor id="0">1.93</sensor>
+        <depth>0.22000027</depth>
+        <sensor id="0">1.99</sensor>
+        <depth>0.2300005</depth>
+        <sensor id="0">2.04</sensor>
+        <depth>0.2300005</depth>
+        <sensor id="0">1.95</sensor>
+        <depth>0.24000072</depth>
+        <sensor id="0">1.9</sensor>
+        <depth>0.24000072</depth>
+        <sensor id="0">1.89</sensor>
+        <depth>0.25</depth>
+        <sensor id="0">1.91</sensor>
+        <depth>0.25</depth>
+        <sensor id="0">1.83</sensor>
+        <depth>0.26000023</depth>
+        <sensor id="0">1.83</sensor>
+        <depth>0.26000023</depth>
+        <sensor id="0">1.84</sensor>
+        <depth>0.27000046</depth>
+        <sensor id="0">1.82</sensor>
+        <depth>0.27000046</depth>
+        <sensor id="0">1.72</sensor>
+        <depth>0.2800007</depth>
+        <sensor id="0">1.8</sensor>
+        <depth>0.2800007</depth>
+        <sensor id="0">1.73</sensor>
+        <depth>0.28999996</depth>
+        <sensor id="0">1.76</sensor>
+        <depth>0.28999996</depth>
+        <sensor id="0">1.72</sensor>
+        <depth>0.3000002</depth>
+        <sensor id="0">1.81</sensor>
+        <depth>8.13</depth>
+        <sensor id="0">2.34</sensor>
+        <depth>8.13</depth>
+        <sensor id="0">2.34</sensor>
+        <depth>8.14</depth>
+        <sensor id="0">2.32</sensor>
+        <depth>8.14</depth>
+        <sensor id="0">2.35</sensor>
+        <depth>8.150001</depth>
+        <sensor id="0">2.4</sensor>
+        <depth>8.150001</depth>
+        <sensor id="0">2.37</sensor>
+        <depth>8.160001</depth>
+        <sensor id="0">2.37</sensor>
+        <depth>8.160001</depth>
+        <sensor id="0">2.36</sensor>
+        <depth>8.170001</depth>
+        <sensor id="0">2.31</sensor>
+        <depth>8.170001</depth>
+        <sensor id="0">2.17</sensor>
+        <depth>8.180001</depth>
+        <sensor id="0">1.83</sensor>
+        <depth>8.180001</depth>
+        <sensor id="0">1.68</sensor>
+        <depth>8.19</depth>
+        <sensor id="0">1.76</sensor>
+        <depth>8.19</depth>
+        <sensor id="0">1.87</sensor>
+        <depth>8.2</depth>
+        <sensor id="0">1.93</sensor>
+        <depth>8.2</depth>
+        <sensor id="0">2.03</sensor>
+        <depth>8.21</depth>
+        <sensor id="0">2.07</sensor>
+        <depth>8.21</depth>
+        <sensor id="0">2.08</sensor>
+        <depth>8.22</depth>
+        <sensor id="0">2.06</sensor>
+        <depth>8.22</depth>
+        <sensor id="0">2.24</sensor>
+        <depth>8.2300005</depth>
+        <sensor id="0">2.23</sensor>
+        <depth>8.2300005</depth>
+        <sensor id="0">2.11</sensor>
+        <depth>8.240001</depth>
+        <sensor id="0">1.95</sensor>
+        <depth>8.240001</depth>
+        <sensor id="0">1.74</sensor>
+        <depth>8.250001</depth>
+        <sensor id="0">1.66</sensor>
+        <depth>8.250001</depth>
+        <sensor id="0">1.61</sensor>
+        <depth>8.260001</depth>
+        <sensor id="0">1.57</sensor>
+        <depth>8.260001</depth>
+        <sensor id="0">1.54</sensor>
+        <depth>8.2699995</depth>
+        <sensor id="0">1.61</sensor>
+        <depth>8.2699995</depth>
+        <sensor id="0">1.49</sensor>
+        <depth>8.28</depth>
+        <sensor id="0">1.5</sensor>
+        <depth>8.28</depth>
+        <sensor id="0">1.52</sensor>
+        <depth>8.29</depth>
+        <sensor id="0">1.59</sensor>
+        <depth>8.29</depth>
+        <sensor id="0">1.7</sensor>
+        <depth>8.3</depth>
+        <sensor id="0">1.83</sensor>
+        <depth>8.3</depth>
+        <sensor id="0">1.82</sensor>
+        <depth>8.31</depth>
+        <sensor id="0">1.85</sensor>
+    </section>
+</corewall_data>
