@@ -141,9 +141,6 @@ public class FreeformPanel extends JPanel implements MouseListener, MouseMotionL
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public void keyPressed(final KeyEvent e) {
 		// handle key navigation
 		Dimension size = getSize();
@@ -183,9 +180,6 @@ public class FreeformPanel extends JPanel implements MouseListener, MouseMotionL
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public void keyReleased(final KeyEvent e) {
 		if (isFocusOwner() && isEditable()) {
 			if (handler != null) {
@@ -196,9 +190,6 @@ public class FreeformPanel extends JPanel implements MouseListener, MouseMotionL
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public void keyTyped(final KeyEvent e) {
 		if (isFocusOwner() && isEditable()) {
 			if (handler != null) {
@@ -378,9 +369,6 @@ public class FreeformPanel extends JPanel implements MouseListener, MouseMotionL
 		repaint();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public void sceneChanged() {
 		invalidate();
 		Component parent = getParent();
@@ -391,9 +379,6 @@ public class FreeformPanel extends JPanel implements MouseListener, MouseMotionL
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public void selectionChanged(final Selection selection) {
 		sceneChanged();
 	}

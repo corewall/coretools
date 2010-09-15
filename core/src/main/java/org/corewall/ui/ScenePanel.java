@@ -187,9 +187,6 @@ public class ScenePanel extends JPanel implements MouseListener, MouseMotionList
 		return part;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public Dimension getPreferredScrollableViewportSize() {
 		return getPreferredSize();
 	}
@@ -278,9 +275,6 @@ public class ScenePanel extends JPanel implements MouseListener, MouseMotionList
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public void keyPressed(final KeyEvent e) {
 		if (isFocusOwner() && isEditable()) {
 			if (handler != null) {
@@ -291,9 +285,6 @@ public class ScenePanel extends JPanel implements MouseListener, MouseMotionList
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public void keyReleased(final KeyEvent e) {
 		if (isFocusOwner() && isEditable()) {
 			if (handler != null) {
@@ -304,9 +295,6 @@ public class ScenePanel extends JPanel implements MouseListener, MouseMotionList
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public void keyTyped(final KeyEvent e) {
 		if (isFocusOwner() && isEditable()) {
 			if (handler != null) {
@@ -479,9 +467,6 @@ public class ScenePanel extends JPanel implements MouseListener, MouseMotionList
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public void sceneChanged() {
 		invalidate();
 		Component parent = getParent();
@@ -492,9 +477,6 @@ public class ScenePanel extends JPanel implements MouseListener, MouseMotionList
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public void selectionChanged(final Selection selection) {
 		sceneChanged();
 	}

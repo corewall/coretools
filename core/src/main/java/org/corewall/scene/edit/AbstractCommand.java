@@ -23,23 +23,14 @@ package org.corewall.scene.edit;
 public abstract class AbstractCommand implements Command {
 	protected boolean executed = false;
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public boolean canExecute() {
 		return !executed;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public boolean canUndo() {
 		return executed;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public void execute() {
 		if (canExecute()) {
 			executeCommand();
@@ -52,16 +43,10 @@ public abstract class AbstractCommand implements Command {
 	 */
 	protected abstract void executeCommand();
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public void redo() {
 		execute();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public void undo() {
 		if (canUndo()) {
 			undoCommand();

@@ -52,10 +52,8 @@ public class DefaultLocator implements Locator {
 	}
 
 	private static Logger LOGGER = LoggerFactory.getLogger(DefaultLocator.class);
-
 	private Resources resources = new Resources(DefaultLocator.class.getClassLoader());
 	private File currentDirectory = new File(".");
-
 	protected final SetMultimap<String, Object> services = LinkedHashMultimap.create();
 
 	/**
@@ -65,9 +63,6 @@ public class DefaultLocator implements Locator {
 		LOGGER.debug("initialized");
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public void addResource(final URL resource) {
 		resources.addURL(resource);
 		LOGGER.debug("Added resource {}", resource);
@@ -90,9 +85,6 @@ public class DefaultLocator implements Locator {
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public URL getResource(final String path) {
 		ImmutableList<URL> list = getResources(path);
 		if (list.isEmpty()) {
@@ -102,9 +94,6 @@ public class DefaultLocator implements Locator {
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public ImmutableList<URL> getResources(final String path) {
 		List<URL> list = new ArrayList<URL>();
 		if (path != null) {

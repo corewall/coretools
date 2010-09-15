@@ -59,9 +59,6 @@ public class Selection implements Iterable<Object> {
 		this(Arrays.asList(selection));
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public boolean equals(final Object obj) {
 		if (this == obj) {
@@ -115,9 +112,6 @@ public class Selection implements Iterable<Object> {
 		return selection.size();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -135,16 +129,10 @@ public class Selection implements Iterable<Object> {
 		return selection.size() == 0;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public Iterator<Object> iterator() {
 		return selection.iterator();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public String toString() {
 		return "Selection: " + selection;

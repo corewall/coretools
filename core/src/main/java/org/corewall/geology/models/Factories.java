@@ -51,9 +51,6 @@ public final class Factories {
 			this.defaults = defaults;
 		}
 
-		/**
-		 * {@inheritDoc}
-		 */
 		public T build(final Map<String, String> map) {
 			return internalBuild(rewrite(map));
 		}

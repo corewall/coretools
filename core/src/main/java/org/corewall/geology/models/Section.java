@@ -296,9 +296,6 @@ public class Section implements Model {
 		return result;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public Map<String, String> toMap() {
 		Map<String, String> map = Maps.newHashMapWithExpectedSize(3);
 		map.put(NAME_KEY, getName());

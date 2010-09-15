@@ -66,9 +66,6 @@ public class DefaultSceneEventHandler implements SceneEventHandler {
 		return handler;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public Feedback keyPressed(final SceneKeyEvent e) {
 		SceneEventHandler handler = getHandler(null);
 		if (handler != null) {
@@ -78,9 +75,6 @@ public class DefaultSceneEventHandler implements SceneEventHandler {
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public Feedback keyReleased(final SceneKeyEvent e) {
 		SceneEventHandler handler = getHandler(null);
 		if (handler != null) {
@@ -90,9 +84,6 @@ public class DefaultSceneEventHandler implements SceneEventHandler {
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public Feedback keyTyped(final SceneKeyEvent e) {
 		SceneEventHandler handler = getHandler(null);
 		if (handler != null) {
@@ -102,9 +93,6 @@ public class DefaultSceneEventHandler implements SceneEventHandler {
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public Feedback mouseClicked(final SceneMouseEvent e) {
 		SceneEventHandler handler = getHandler(e);
 		if (handler != null) {
@@ -114,9 +102,6 @@ public class DefaultSceneEventHandler implements SceneEventHandler {
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public Feedback mouseDragged(final SceneMouseEvent e) {
 		SceneEventHandler handler = getHandler(e);
 		if (handler != null) {
@@ -126,9 +111,6 @@ public class DefaultSceneEventHandler implements SceneEventHandler {
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public Feedback mouseMoved(final SceneMouseEvent e) {
 		SceneEventHandler handler = getHandler(e);
 		if (handler != null) {
@@ -138,9 +120,6 @@ public class DefaultSceneEventHandler implements SceneEventHandler {
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public Feedback mousePressed(final SceneMouseEvent e) {
 		SceneEventHandler handler = getHandler(e);
 		if (handler != null) {
@@ -150,9 +129,6 @@ public class DefaultSceneEventHandler implements SceneEventHandler {
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public Feedback mouseReleased(final SceneMouseEvent e) {
 		SceneEventHandler handler = getHandler(e);
 		if (handler != null) {

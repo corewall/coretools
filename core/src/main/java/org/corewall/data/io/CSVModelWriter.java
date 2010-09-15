@@ -94,9 +94,6 @@ public class CSVModelWriter implements ModelWriter {
 		this(new CSVWriter(writer, separator), headers);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public void write(final List<? extends Model> models) throws IOException {
 		if (models.size() == 0) {
 			return;

@@ -88,44 +88,26 @@ public class DefaultFeedback implements Feedback {
 		this.figure = figure;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public int getCursorType() {
 		return cursorType;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public String getProperty(final String name) {
 		return (properties == null) ? null : properties.get(name);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public Object getTarget() {
 		return target;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public String getType() {
 		return type;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public boolean needsRendering() {
 		return figure != null;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public void renderFeedback(final GraphicsContext graphics) {
 		if (figure != null) {
 			figure.render(graphics);

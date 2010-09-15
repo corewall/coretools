@@ -38,9 +38,6 @@ public class CompositeCommand implements Command {
 		this.commands = commands;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public boolean canExecute() {
 		boolean executable = true;
 		for (Command c : commands) {
@@ -49,9 +46,6 @@ public class CompositeCommand implements Command {
 		return !executed && executable;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public boolean canUndo() {
 		boolean undoable = true;
 		for (Command c : commands) {
@@ -60,9 +54,6 @@ public class CompositeCommand implements Command {
 		return executed && undoable;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public void execute() {
 		if (canExecute()) {
 			for (Command c : commands) {
@@ -72,23 +63,14 @@ public class CompositeCommand implements Command {
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public String getLabel() {
 		return label;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public void redo() {
 		execute();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public void undo() {
 		if (canUndo()) {
 			for (Command c : commands) {

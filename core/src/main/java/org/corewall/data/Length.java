@@ -3,7 +3,6 @@ package org.corewall.data;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
-
 /**
  * A length has a value and a unit.
  * 

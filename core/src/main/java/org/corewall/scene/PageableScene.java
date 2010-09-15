@@ -170,9 +170,6 @@ public class PageableScene implements Scene {
 		return scene.getParameter(name, defaultValue);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public ImmutableMap<String, String> getParameters() {
 		return scene.getParameters();
 	}

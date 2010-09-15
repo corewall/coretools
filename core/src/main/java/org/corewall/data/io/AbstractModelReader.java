@@ -13,9 +13,6 @@ import com.google.common.collect.Lists;
 public abstract class AbstractModelReader implements ModelReader {
 	protected List<Map<String, String>> cached;
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public List<Map<String, String>> getModels() {
 		if (cached == null) {
 			cached = parseModels();
@@ -23,9 +20,6 @@ public abstract class AbstractModelReader implements ModelReader {
 		return cached;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public List<Map<String, String>> getModels(final Filter filter) {
 		List<Map<String, String>> list = Lists.newLinkedList();
 		for (Map<String, String> map : getModels()) {
@@ -36,9 +30,6 @@ public abstract class AbstractModelReader implements ModelReader {
 		return list;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public <T> List<T> getModels(final Filter filter, final Factory<T> factory) {
 		List<T> list = Lists.newLinkedList();
 		for (Map<String, String> map : getModels()) {
