@@ -1,11 +1,13 @@
 package org.corewall.scene.edit;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import junit.framework.TestCase;
-
-import org.corewall.scene.edit.CommandStack;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,7 +16,7 @@ import org.junit.Test;
  * 
  * @author Josh Reed (jareed@andrill.org)
  */
-public class CommandStackTest extends TestCase {
+public class CommandStackTest {
 
 	/**
 	 * A property change listener.
@@ -32,7 +34,6 @@ public class CommandStackTest extends TestCase {
 
 	private CommandStack edit;
 
-	@Override
 	@Before
 	public void setUp() {
 		edit = new CommandStack();

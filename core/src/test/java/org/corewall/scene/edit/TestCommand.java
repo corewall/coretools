@@ -1,6 +1,5 @@
 package org.corewall.scene.edit;
 
-import org.corewall.scene.edit.AbstractCommand;
 
 /**
  * A test command.

@@ -4,13 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import junit.framework.TestCase;
-
 import org.corewall.Platform;
-import org.corewall.graphics.GraphicsContext;
-import org.corewall.graphics.PDFGraphics;
-import org.corewall.graphics.Paper;
 import org.corewall.graphics.driver.PDFDriver;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.lowagie.text.Document;
@@ -23,10 +19,11 @@ import com.lowagie.text.pdf.PdfWriter;
  * 
  * @author Josh Reed (jareed@andrill.org)
  */
-public class PDFTest extends TestCase {
-	static {
+public class PDFTest {
+
+	@BeforeClass
+	public static void startPlatform() {
 		Platform.start();
-		(new File("build")).mkdirs();
 	}
 
 	/**

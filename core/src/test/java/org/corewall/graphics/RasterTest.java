@@ -3,10 +3,8 @@ package org.corewall.graphics;
 import java.io.File;
 import java.io.IOException;
 
-import junit.framework.TestCase;
-
 import org.corewall.Platform;
-import org.corewall.graphics.RasterGraphics;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -14,10 +12,10 @@ import org.junit.Test;
  * 
  * @author Josh Reed (jareed@andrill.org)
  */
-public class RasterTest extends TestCase {
-	static {
+public class RasterTest {
+	@BeforeClass
+	public static void startPlatform() {
 		Platform.start();
-		(new File("build")).mkdirs();
 	}
 
 	/**

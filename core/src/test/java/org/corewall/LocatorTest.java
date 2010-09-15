@@ -1,15 +1,17 @@
 package org.corewall;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-import junit.framework.TestCase;
-
-import org.corewall.Locator;
-import org.corewall.Platform;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -17,8 +19,10 @@ import org.junit.Test;
  * 
  * @author Josh Reed (jareed@andrill.org)
  */
-public class LocatorTest extends TestCase {
-	static {
+public class LocatorTest {
+
+	@BeforeClass
+	public static void startPlatform() {
 		Platform.start();
 	}
 
@@ -34,7 +38,6 @@ public class LocatorTest extends TestCase {
 		}
 	}
 
-	@Override
 	@Before
 	public void setUp() {
 		locator = Platform.getService(Locator.class);

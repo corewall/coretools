@@ -1,10 +1,10 @@
 package org.corewall.scene.edit;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
-import org.corewall.scene.edit.AbstractCommand;
-import org.corewall.scene.edit.Command;
-import org.corewall.scene.edit.CompositeCommand;
 import org.junit.Test;
 
 /**
@@ -12,7 +12,7 @@ import org.junit.Test;
  * 
  * @author Josh Reed (jareed@andrill.org)
  */
-public class CommandsTest extends TestCase {
+public class CommandsTest {
 
 	/**
 	 * Tests initial state, executing, undoing, and redoing of a single command.

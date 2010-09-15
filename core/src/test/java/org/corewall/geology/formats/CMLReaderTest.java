@@ -1,12 +1,13 @@
 package org.corewall.geology.formats;
 
-import java.io.IOException;
+import static org.junit.Assert.assertEquals;
 
-import junit.framework.TestCase;
+import java.io.IOException;
 
 import org.corewall.Platform;
 import org.corewall.data.io.Filters;
 import org.corewall.geology.io.CMLReader;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.google.common.collect.ImmutableSet;
@@ -16,9 +17,10 @@ import com.google.common.collect.ImmutableSet;
  * 
  * @author Josh Reed (jareed@andrill.org)
  */
-public class CMLReaderTest extends TestCase {
+public class CMLReaderTest {
 
-	static {
+	@BeforeClass
+	public static void startPlatform() {
 		Platform.start();
 	}
 

@@ -4,11 +4,13 @@ import static org.junit.Assert.assertEquals;
 
 import org.corewall.Platform;
 import org.corewall.geology.io.CoreRefProject;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class CoreRefProjectTest {
 
-	static {
+	@BeforeClass
+	public static void startPlatform() {
 		Platform.start();
 	}
 

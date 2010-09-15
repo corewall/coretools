@@ -1,8 +1,9 @@
 package org.corewall.geology.formats;
 
-import java.io.IOException;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
-import junit.framework.TestCase;
+import java.io.IOException;
 
 import org.corewall.data.io.Filters;
 import org.corewall.geology.io.XMLDataReader;
@@ -16,7 +17,7 @@ import com.google.common.collect.ImmutableSet;
  * 
  * @author Josh Reed (jareed@andrill.org)
  */
-public class XMLDataReaderTest extends TestCase {
+public class XMLDataReaderTest {
 
 	/**
 	 * Tests parsing Corelyzer XML data into {@link XYDataSet}s.

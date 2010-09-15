@@ -11,16 +11,13 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.corewall.graphics.GraphicsContext;
-import org.corewall.graphics.Paper;
-import org.corewall.graphics.RasterGraphics;
 import org.corewall.graphics.driver.ColorFill;
 import org.corewall.graphics.driver.Driver;
+import org.corewall.graphics.driver.Driver.ArcStyle;
+import org.corewall.graphics.driver.Driver.LineStyle;
 import org.corewall.graphics.driver.GradientFill;
 import org.corewall.graphics.driver.MultiFill;
 import org.corewall.graphics.driver.TextureFill;
-import org.corewall.graphics.driver.Driver.ArcStyle;
-import org.corewall.graphics.driver.Driver.LineStyle;
 
 /**
  * A harness to test out graphics {@link Driver}s.

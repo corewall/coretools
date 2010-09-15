@@ -8,9 +8,10 @@ import org.corewall.Platform;
 import org.corewall.data.Model;
 import org.corewall.geology.io.LocalProject;
 import org.corewall.geology.models.EditableProject;
+import org.corewall.geology.models.EditableProject.Listener;
 import org.corewall.geology.models.Project;
 import org.corewall.geology.models.Section;
-import org.corewall.geology.models.EditableProject.Listener;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class ProjectTest {
@@ -32,7 +33,8 @@ public class ProjectTest {
 		}
 	}
 
-	static {
+	@BeforeClass
+	public static void startPlatform() {
 		Platform.start();
 	}
 
