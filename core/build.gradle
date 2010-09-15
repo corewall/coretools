@@ -1,6 +1,7 @@
+version = '0.0.1-SNAPSHOT'
 manifest.mainAttributes(
 	'Implementation-Title': 'CoreWall Platform',
-	'Implementation-Version': '0.0.1-SNAPSHOT'
+	'Implementation-Version': version
 )
 
 dependencies {
@@ -19,4 +20,10 @@ dependencies {
 	compile group: 'org.apache.xmlgraphics', name: 'batik-svggen', version: '1.7'
 	testCompile 'junit:junit:4.4'
 	runtime 'org.slf4j:slf4j-simple:1.6.1'
+}
+
+task release(dependsOn: configurations.default.buildArtifacts, type: Copy) {
+    into "$buildDir/release"
+    from configurations.default
+    from configurations.default.allArtifactFiles
 }
