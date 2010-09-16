@@ -24,13 +24,14 @@ import org.slf4j.LoggerFactory;
  */
 public class LoadTask implements Callable<BufferedImage> {
 	static class Params {
-		String path;
-		Future<File> file;
-		int level = 0;
-		boolean isVertical = false;
 		WeakReference<JComponent> component;
+		Future<File> file;
+		boolean isVertical = false;
+		int level = 0;
+		String path;
 
-		Params(final String path, final Future<File> file, final int level, final boolean isVertical, final JComponent component) {
+		Params(final String path, final Future<File> file, final int level, final boolean isVertical,
+				final JComponent component) {
 			this.path = path;
 			this.file = file;
 			this.level = level;

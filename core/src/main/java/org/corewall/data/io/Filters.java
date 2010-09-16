@@ -69,7 +69,7 @@ public final class Filters {
 		}
 
 		public boolean accept(final Map<String, String> map) {
-			return (map.containsKey(name) && ((value == WILDCARD) || value.equals(map.get(name))));
+			return (map.containsKey(name) && ((WILDCARD.equals(value)) || value.equals(map.get(name))));
 		}
 	}
 

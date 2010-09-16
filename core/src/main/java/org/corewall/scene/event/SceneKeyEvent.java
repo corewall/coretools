@@ -34,7 +34,7 @@ public class SceneKeyEvent extends SceneEvent {
 	 *            the key character.
 	 */
 	public SceneKeyEvent(final Object source, final Part target, final int modifiers, final int keyCode,
-	        final char keyChar) {
+			final char keyChar) {
 		this.target = target;
 		this.source = source;
 		this.modifiers = modifiers;
@@ -110,7 +110,7 @@ public class SceneKeyEvent extends SceneEvent {
 		sb.append("Shift: " + isShiftDown() + ", ");
 		sb.append("Key Code: " + getKeyCode() + ", ");
 		sb.append("Key Char: " + getKeyChar());
-		sb.append("]");
+		sb.append(']');
 		return sb.toString();
 	}
 }

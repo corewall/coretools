@@ -68,12 +68,12 @@ public class LocalProject implements EditableProject {
 		return project;
 	}
 
-	protected final File projectFile;
-	protected final Set<Listener> listeners = new CopyOnWriteArraySet<Listener>();
-	protected final List<Section> sections = Lists.newLinkedList();
-	protected final List<Image> images = Lists.newLinkedList();
-	protected final Properties properties = new Properties();
 	protected boolean dirty = false;
+	protected final List<Image> images = Lists.newLinkedList();
+	protected final Set<Listener> listeners = new CopyOnWriteArraySet<Listener>();
+	protected final File projectFile;
+	protected final Properties properties = new Properties();
+	protected final List<Section> sections = Lists.newLinkedList();
 
 	/**
 	 * Creates a new project from the specified file.
@@ -168,7 +168,8 @@ public class LocalProject implements EditableProject {
 		readModelTable(getImagesFile(), images, Factories.image());
 	}
 
-	protected <T extends Model> void readModelTable(final String filename, final List<T> models, final ModelReader.Factory<T> factory) throws IOException {
+	protected <T extends Model> void readModelTable(final String filename, final List<T> models,
+			final ModelReader.Factory<T> factory) throws IOException {
 		File table = new File(projectFile.getParentFile(), filename);
 		if (table.exists()) {
 			FileReader in = null;
@@ -222,7 +223,8 @@ public class LocalProject implements EditableProject {
 		dirty = false;
 	}
 
-	protected void writeModelTable(final String filename, final List<? extends Model> models, final String[] keys) throws IOException {
+	protected void writeModelTable(final String filename, final List<? extends Model> models, final String[] keys)
+			throws IOException {
 		// build our header
 		Map<String, String> headers = Maps.newLinkedHashMap();
 		for (String s : keys) {

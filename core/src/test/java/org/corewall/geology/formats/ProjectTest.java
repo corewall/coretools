@@ -15,7 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class ProjectTest {
-	class MockListener implements Listener {
+	static class MockListener implements Listener {
 		Model added;
 		Model changed;
 		Model removed;

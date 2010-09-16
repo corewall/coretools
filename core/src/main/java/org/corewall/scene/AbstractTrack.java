@@ -23,9 +23,9 @@ import com.google.inject.internal.Maps;
  *            the track's model type.
  */
 public abstract class AbstractTrack<T> implements Track {
+	protected List<T> models = Lists.newLinkedList();
 	protected Map<String, String> parameters = Maps.newHashMap();
 	protected Scene scene = null;
-	protected List<T> models = Lists.newLinkedList();
 
 	/**
 	 * Adds the specified model to this track.
@@ -91,7 +91,7 @@ public abstract class AbstractTrack<T> implements Track {
 	 * @return true if equals, false otherwise.
 	 */
 	protected boolean preciseEquals(final double a, final double b) {
-		return a == b ? true : Math.abs(a - b) < 1E-6;
+		return Math.abs(a - b) < 1E-6;
 	}
 
 	/**

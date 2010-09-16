@@ -37,8 +37,8 @@ public class DefaultLocator implements Locator {
 	}
 
 	private static Logger LOGGER = LoggerFactory.getLogger(DefaultLocator.class);
-	private Resources resources = new Resources(DefaultLocator.class.getClassLoader());
 	private File currentDirectory = new File(".");
+	private Resources resources = new Resources(DefaultLocator.class.getClassLoader());
 	protected final SetMultimap<String, Object> services = LinkedHashMultimap.create();
 
 	/**
@@ -107,7 +107,7 @@ public class DefaultLocator implements Locator {
 	private String strip(final String path) {
 		final int idx = path.indexOf(':');
 		String stripped = (idx > -1) ? path.substring(idx + 1) : path;
-		while (stripped.startsWith("/")) {
+		while (stripped.charAt(0) == '/') {
 			stripped = stripped.substring(1);
 		}
 		return stripped;

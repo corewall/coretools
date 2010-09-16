@@ -149,13 +149,13 @@ public class XYDataSet {
 		};
 	}
 
-	protected final String name;
-	protected final Hash function;
-	protected final SortedMap<Integer, List<XYDatum>> segments = new TreeMap<Integer, List<XYDatum>>();
 	protected int count = 0;
-	protected int segMax = 0;
+	protected final Hash function;
 	protected double max = Double.MIN_VALUE;
 	protected double min = Double.MAX_VALUE;
+	protected final String name;
+	protected int segMax = 0;
+	protected final SortedMap<Integer, List<XYDatum>> segments = new TreeMap<Integer, List<XYDatum>>();
 
 	/**
 	 * Create a new XYDataSet.
@@ -165,7 +165,7 @@ public class XYDataSet {
 	 */
 	public XYDataSet(final String name) {
 		this.name = name;
-		this.function = floorHash(1);
+		function = floorHash(1);
 	}
 
 	/**
@@ -178,7 +178,7 @@ public class XYDataSet {
 	 */
 	public XYDataSet(final String name, final Hash hash) {
 		this.name = name;
-		this.function = hash;
+		function = hash;
 	}
 
 	/**
@@ -193,7 +193,7 @@ public class XYDataSet {
 	 */
 	public XYDataSet(final String name, final Hash hash, final List<XYDatum> data) {
 		this.name = name;
-		this.function = hash;
+		function = hash;
 		for (XYDatum d : data) {
 			add(d);
 		}
@@ -532,7 +532,7 @@ public class XYDataSet {
 		s.append(", max: " + max);
 		s.append(", min: " + min);
 		s.append(", max seg: " + segMax);
-		s.append("]");
+		s.append(']');
 		return s.toString();
 	}
 }

@@ -23,9 +23,9 @@ import com.google.inject.internal.Sets;
  * @author Josh Reed (jareed@andrill.org)
  */
 public final class Platform {
+	private static Injector injector = null;
 	private static Logger LOGGER = LoggerFactory.getLogger(Platform.class);
 	private static boolean started = false;
-	private static Injector injector = null;
 
 	/**
 	 * Gets a service from the platform.
@@ -52,7 +52,7 @@ public final class Platform {
 			String line = null;
 			while ((line = br.readLine()) != null) {
 				final String spi = line.trim();
-				if (!spi.startsWith("#")) {
+				if (spi.charAt(0) != '#') {
 					try {
 						final E instance = (E) Class.forName(spi).newInstance();
 						set.add(instance);

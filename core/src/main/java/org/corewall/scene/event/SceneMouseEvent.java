@@ -14,13 +14,13 @@ public class SceneMouseEvent extends SceneEvent {
 	 * The mouse button of the event.
 	 */
 	public enum Button {
-		NO_BUTTON, BUTTON1, BUTTON2, BUTTON3
+		BUTTON1, BUTTON2, BUTTON3, NO_BUTTON
 	}
 
 	protected Button button;
 	protected int clickCount;
-	protected int x, y;
 	protected int dragX = -1, dragY = -1;
+	protected int x, y;
 
 	/**
 	 * Create a new SceneMouseEvent.
@@ -178,7 +178,7 @@ public class SceneMouseEvent extends SceneEvent {
 		sb.append("Button: " + getButton() + ", ");
 		sb.append("Point: (" + getX() + ", " + getY() + "), ");
 		sb.append("Click Count: " + getClickCount());
-		sb.append("]");
+		sb.append(']');
 		return sb.toString();
 	}
 }

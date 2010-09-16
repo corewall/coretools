@@ -2,14 +2,14 @@ package org.corewall.graphics.internal;
 
 /*
  * ImageInfo.java
- *
+ * 
  * Version 1.9
- *
- * A Java class to determine image width, height and color depth for
- * a number of image file formats.
- *
+ * 
+ * A Java class to determine image width, height and color depth for a number of
+ * image file formats.
+ * 
  * Written by Marco Schmidt
- *
+ * 
  * Contributed to the Public Domain.
  */
 import java.io.DataInput;
@@ -366,11 +366,11 @@ public class ImageInfo {
 			return;
 		}
 		while (indentLevels-- > 0) {
-			System.out.print("\t");
+			System.out.print('\t');
 		}
 		if ((text != null) && (text.length() > 0)) {
 			System.out.print(text);
-			System.out.print(" ");
+			System.out.print(' ');
 		}
 		System.out.println(value);
 	}

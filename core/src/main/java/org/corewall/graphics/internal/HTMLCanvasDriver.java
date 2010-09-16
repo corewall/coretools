@@ -29,19 +29,21 @@ public class HTMLCanvasDriver implements Driver {
 	 * <http://www.spaceroots.org/documents/ellipse/EllipticalArc.java>.
 	 */
 	protected class Arc extends Shape {
-		private final double[][][] coeffs3Low = new double[][][] {
-				{ { 3.85268, -21.229, -0.330434, 0.0127842 }, { -1.61486, 0.706564, 0.225945, 0.263682 }, { -0.910164, 0.388383, 0.00551445, 0.00671814 },
-						{ -0.630184, 0.192402, 0.0098871, 0.0102527 } },
-				{ { -0.162211, 9.94329, 0.13723, 0.0124084 }, { -0.253135, 0.00187735, 0.0230286, 0.01264 }, { -0.0695069, -0.0437594, 0.0120636, 0.0163087 },
-						{ -0.0328856, -0.00926032, -0.00173573, 0.00527385 } } };
 		private final double[][][] coeffs3High = new double[][][] {
-				{ { 0.0899116, -19.2349, -4.11711, 0.183362 }, { 0.138148, -1.45804, 1.32044, 1.38474 }, { 0.230903, -0.450262, 0.219963, 0.414038 },
-						{ 0.0590565, -0.101062, 0.0430592, 0.0204699 } },
+				{ { 0.0899116, -19.2349, -4.11711, 0.183362 }, { 0.138148, -1.45804, 1.32044, 1.38474 },
+						{ 0.230903, -0.450262, 0.219963, 0.414038 }, { 0.0590565, -0.101062, 0.0430592, 0.0204699 } },
 				{ { 0.0164649, 9.89394, 0.0919496, 0.00760802 }, { 0.0191603, -0.0322058, 0.0134667, -0.0825018 },
-						{ 0.0156192, -0.017535, 0.00326508, -0.228157 }, { -0.0236752, 0.0405821, -0.0173086, 0.176187 } } };
-		private final double[] safety3 = new double[] { 0.001, 4.98, 0.207, 0.0067 };
-
+						{ 0.0156192, -0.017535, 0.00326508, -0.228157 },
+						{ -0.0236752, 0.0405821, -0.0173086, 0.176187 } } };
+		private final double[][][] coeffs3Low = new double[][][] {
+				{ { 3.85268, -21.229, -0.330434, 0.0127842 }, { -1.61486, 0.706564, 0.225945, 0.263682 },
+						{ -0.910164, 0.388383, 0.00551445, 0.00671814 }, { -0.630184, 0.192402, 0.0098871, 0.0102527 } },
+				{ { -0.162211, 9.94329, 0.13723, 0.0124084 }, { -0.253135, 0.00187735, 0.0230286, 0.01264 },
+						{ -0.0695069, -0.0437594, 0.0120636, 0.0163087 },
+						{ -0.0328856, -0.00926032, -0.00173573, 0.00527385 } } };
 		Rectangle2D r;
+
+		private final double[] safety3 = new double[] { 0.001, 4.98, 0.207, 0.0067 };
 		double start, extent;
 		ArcStyle style;
 
@@ -66,11 +68,11 @@ public class HTMLCanvasDriver implements Driver {
 			double[][][] coeffs = (x < 0.25) ? coeffs3Low : coeffs3High;
 			double[] safety = safety3;
 
-			double c0 = rationalFunction(x, coeffs[0][0]) + cos2 * rationalFunction(x, coeffs[0][1]) + cos4 * rationalFunction(x, coeffs[0][2]) + cos6
-					* rationalFunction(x, coeffs[0][3]);
+			double c0 = rationalFunction(x, coeffs[0][0]) + cos2 * rationalFunction(x, coeffs[0][1]) + cos4
+					* rationalFunction(x, coeffs[0][2]) + cos6 * rationalFunction(x, coeffs[0][3]);
 
-			double c1 = rationalFunction(x, coeffs[1][0]) + cos2 * rationalFunction(x, coeffs[1][1]) + cos4 * rationalFunction(x, coeffs[1][2]) + cos6
-					* rationalFunction(x, coeffs[1][3]);
+			double c1 = rationalFunction(x, coeffs[1][0]) + cos2 * rationalFunction(x, coeffs[1][1]) + cos4
+					* rationalFunction(x, coeffs[1][2]) + cos6 * rationalFunction(x, coeffs[1][3]);
 
 			return (int) (rationalFunction(x, safety) * a * Math.exp(c0 + c1 * dEta));
 		}
@@ -144,7 +146,8 @@ public class HTMLCanvasDriver implements Driver {
 				xBDot = -aSinEtaB * 1 - bCosEtaB * 0;
 				yBDot = -aSinEtaB * 0 + bCosEtaB * 1;
 
-				canvasFunc("bezierCurveTo", (xA + alpha * xADot), (yA + alpha * yADot), (xB - alpha * xBDot), (yB - alpha * yBDot), xB, yB);
+				canvasFunc("bezierCurveTo", (xA + alpha * xADot), (yA + alpha * yADot), (xB - alpha * xBDot),
+						(yB - alpha * yBDot), xB, yB);
 			}
 
 			if (style == ArcStyle.SECTOR) {
@@ -273,14 +276,14 @@ public class HTMLCanvasDriver implements Driver {
 
 	private static final NumberFormat DEC = new DecimalFormat("0.####");
 
-	protected final String functionName;
 	protected final String contextVar;
-	protected Stack<AffineTransform> transformStack = new Stack<AffineTransform>();
-	protected Stack<State> stateStack = new Stack<State>();
-	protected StringBuilder script;
-	protected boolean strokeChanged = false;
 	protected boolean fillChanged = false;
+	protected final String functionName;
+	protected StringBuilder script;
+	protected Stack<State> stateStack = new Stack<State>();
+	protected boolean strokeChanged = false;
 	protected AtomicInteger tempId = new AtomicInteger(0);
+	protected Stack<AffineTransform> transformStack = new Stack<AffineTransform>();
 
 	/**
 	 * Create a new CanvasDriver with the specified function and context
@@ -294,7 +297,7 @@ public class HTMLCanvasDriver implements Driver {
 	public HTMLCanvasDriver(final String functionName, final String contextVar) {
 		this.functionName = functionName;
 		this.contextVar = contextVar;
-		this.script = new StringBuilder();
+		script = new StringBuilder();
 		transformStack.push(new AffineTransform());
 		stateStack.push(new State());
 	}
@@ -303,7 +306,7 @@ public class HTMLCanvasDriver implements Driver {
 		script.append(contextVar + "." + name + "(");
 		for (int i = 0; i < args.length; i++) {
 			if (i > 0) {
-				script.append(",");
+				script.append(',');
 			}
 			Object v = args[i];
 			if (v instanceof String) {
@@ -330,7 +333,8 @@ public class HTMLCanvasDriver implements Driver {
 	}
 
 	protected String colorToStyle(final Color color) {
-		return "rgba(" + color.getRed() + "," + color.getGreen() + "," + color.getBlue() + "," + ((color.getAlpha()) / 255.0) + ")";
+		return "rgba(" + color.getRed() + "," + color.getGreen() + "," + color.getBlue() + ","
+				+ ((color.getAlpha()) / 255.0) + ")";
 	}
 
 	public void dispose() {
@@ -364,7 +368,8 @@ public class HTMLCanvasDriver implements Driver {
 		int id = tempId.incrementAndGet();
 		script.append("var i" + id + "=new Image();\n");
 		script.append("i" + id + ".onload = function(){\n");
-		script.append(contextVar + ".drawImage(this," + rect.getX() + "," + rect.getY() + "," + rect.getWidth() + "," + rect.getHeight() + ");\n");
+		script.append(contextVar + ".drawImage(this," + rect.getX() + "," + rect.getY() + "," + rect.getWidth() + ","
+				+ rect.getHeight() + ");\n");
 		script.append("};\n");
 		script.append("i" + id + ".src='" + image.url.toExternalForm() + "';\n");
 	}
@@ -379,7 +384,8 @@ public class HTMLCanvasDriver implements Driver {
 
 	public void drawPoint(final Point2D point) {
 		double offset = stateStack.peek().lineThickness / 2.0;
-		draw(new Line(new Point2D.Double(point.getX() - offset, point.getY()), new Point2D.Double(point.getX() + offset, point.getY())));
+		draw(new Line(new Point2D.Double(point.getX() - offset, point.getY()), new Point2D.Double(
+				point.getX() + offset, point.getY())));
 	}
 
 	public void drawPolygon(final List<Point2D> points) {

@@ -408,36 +408,36 @@ public class Image implements Model {
 		}
 	}
 
+	protected static final String BASE_KEY = "base";
 	// keys
 	protected static final String DPCM_KEY = "dpcm";
-	protected static final String DPCM_Y_KEY = "dpcmY";
 	protected static final String DPCM_X_KEY = "dpcmX";
+	protected static final String DPCM_Y_KEY = "dpcmY";
 	protected static final String DPI_KEY = "dpi";
-	protected static final String DPI_Y_KEY = "dpiY";
 	protected static final String DPI_X_KEY = "dpiX";
+	protected static final String DPI_Y_KEY = "dpiY";
 	protected static final String HEIGHT_KEY = "height";
-	protected static final String WIDTH_KEY = "width";
 	protected static final String LENGTH_KEY = "length";
-	protected static final String BASE_KEY = "base";
-	protected static final String TOP_KEY = "top";
-	protected static final String ORIENTATION_KEY = "orientation";
-	protected static final String PATH_KEY = "path";
-	protected static final String TYPE_KEY = "type";
-
 	private static final Logger LOGGER = LoggerFactory.getLogger(Image.class);
 	private static final DecimalFormat NUM = new DecimalFormat("0.####");
+	protected static final String ORIENTATION_KEY = "orientation";
+	protected static final String PATH_KEY = "path";
+	protected static final String TOP_KEY = "top";
 
-	protected URL path;
-	protected Orientation orientation;
-	protected Length top;
+	protected static final String TYPE_KEY = "type";
+	protected static final String WIDTH_KEY = "width";
+
 	protected Length base;
-	protected Length length;
-	protected boolean parsed = false;
 	protected double dpiX = -1;
 	protected double dpiY = -1;
-	protected int width = -1;
 	protected int height = -1;
+	protected Length length;
+	protected Orientation orientation;
+	protected boolean parsed = false;
+	protected URL path;
+	protected Length top;
 	protected String type = null;
+	protected int width = -1;
 
 	/**
 	 * Builds an image from a map of properties.
@@ -447,20 +447,20 @@ public class Image implements Model {
 	 */
 	public Image(final Map<String, String> properties) {
 		// parse our path
-		this.path = Platform.getService(Locator.class).getResource(properties.get(PATH_KEY));
-		if (this.path == null) {
+		path = Platform.getService(Locator.class).getResource(properties.get(PATH_KEY));
+		if (path == null) {
 			LOGGER.error("No 'path' key or invalid 'path' URL.");
 			throw new RuntimeException("No 'path' key or invalid 'path' URL.");
 		}
 
 		// parse our type
-		this.type = properties.get(TYPE_KEY);
+		type = properties.get(TYPE_KEY);
 
 		// parse our orientation
 		String orientation = properties.get(ORIENTATION_KEY);
-		if ((orientation != null) && orientation.toLowerCase().startsWith("h")) {
+		if ((orientation != null) && (orientation.toLowerCase().charAt(0) == 'h')) {
 			this.orientation = Orientation.HORIZONTAL;
-		} else if ((orientation != null) && orientation.toLowerCase().startsWith("v")) {
+		} else if ((orientation != null) && (orientation.toLowerCase().charAt(0) == 'v')) {
 			this.orientation = Orientation.VERTICAL;
 		} else {
 			LOGGER.debug("No orientation set for {}, defaulting to horizontal", path.toExternalForm());
@@ -510,29 +510,29 @@ public class Image implements Model {
 		String dpi = properties.get(DPI_KEY);
 		if (dpi != null) {
 			double parsed = Double.valueOf(dpi);
-			if (this.dpiX == -1.0) {
+			if (preciseEquals(this.dpiX, -1.0)) {
 				this.dpiX = parsed;
 			}
-			if (this.dpiY == -1) {
+			if (preciseEquals(this.dpiY, -1.0)) {
 				this.dpiY = parsed;
 			}
 		}
 		// dpcm
 		String dpcmX = properties.get(DPCM_X_KEY);
-		if ((dpcmX != null) && (this.dpiX == -1)) {
+		if ((dpcmX != null) && (preciseEquals(this.dpiX, -1))) {
 			this.dpiX = Double.valueOf(dpcmX) * 2.54;
 		}
 		String dpcmY = properties.get(DPCM_Y_KEY);
-		if ((dpcmY != null) && (this.dpiY == -1)) {
+		if ((dpcmY != null) && (preciseEquals(this.dpiY, -1))) {
 			this.dpiY = Double.valueOf(dpcmY) * 2.54;
 		}
 		String dpcm = properties.get(DPCM_KEY);
 		if (dpcm != null) {
 			double parsed = Double.valueOf(dpcm) * 2.54;
-			if (this.dpiX == -1) {
+			if (preciseEquals(this.dpiX, -1)) {
 				this.dpiX = parsed;
 			}
-			if (this.dpiY == -1) {
+			if (preciseEquals(this.dpiY, -1)) {
 				this.dpiY = parsed;
 			}
 		}
@@ -544,7 +544,7 @@ public class Image implements Model {
 			} else {
 				int pixels = (this.orientation == Orientation.HORIZONTAL ? this.width : this.height);
 				double resolution = (this.orientation == Orientation.HORIZONTAL ? this.dpiX : this.dpiY);
-				if ((pixels == -1) || (resolution == -1)) {
+				if ((pixels == -1) || (preciseEquals(resolution, -1))) {
 					parseImageInfo();
 					pixels = (this.orientation == Orientation.HORIZONTAL ? this.width : this.height);
 					resolution = (this.orientation == Orientation.HORIZONTAL ? this.dpiX : this.dpiY);
@@ -569,9 +569,9 @@ public class Image implements Model {
 	 * @return this image as a convenience.
 	 */
 	public Image convertTo(final Unit unit) {
-		this.top = top.to(unit);
-		this.base = base.to(unit);
-		this.length = length.to(unit);
+		top = top.to(unit);
+		base = base.to(unit);
+		length = length.to(unit);
 		return this;
 	}
 
@@ -605,7 +605,7 @@ public class Image implements Model {
 			if (other.path != null) {
 				return false;
 			}
-		} else if (!path.equals(other.path)) {
+		} else if (!path.toExternalForm().equals(other.path.toExternalForm())) {
 			return false;
 		}
 		if (top == null) {
@@ -633,7 +633,7 @@ public class Image implements Model {
 	 * @return the DPI.
 	 */
 	public double getDpiX() {
-		if (dpiX == -1) {
+		if (preciseEquals(dpiX, -1)) {
 			parseImageInfo();
 		}
 		return dpiX;
@@ -645,7 +645,7 @@ public class Image implements Model {
 	 * @return the DPI.
 	 */
 	public double getDpiY() {
-		if (dpiY == -1) {
+		if (preciseEquals(dpiY, -1)) {
 			parseImageInfo();
 		}
 		return dpiY;
@@ -726,7 +726,7 @@ public class Image implements Model {
 		int result = 1;
 		result = prime * result + ((base == null) ? 0 : base.hashCode());
 		result = prime * result + ((orientation == null) ? 0 : orientation.hashCode());
-		result = prime * result + ((path == null) ? 0 : path.hashCode());
+		result = prime * result + ((path == null) ? 0 : path.toExternalForm().hashCode());
 		result = prime * result + ((top == null) ? 0 : top.hashCode());
 		return result;
 	}
@@ -754,10 +754,10 @@ public class Image implements Model {
 				// calculate DPI
 				int pixels = (orientation == Orientation.HORIZONTAL ? width : height);
 				double dpi = pixels / length.to(Unit.INCH).getValue().doubleValue();
-				if (dpiX == -1) {
+				if (preciseEquals(dpiX, -1)) {
 					dpiX = dpi;
 				}
-				if (dpiY == -1) {
+				if (preciseEquals(dpiY, -1)) {
 					dpiY = dpi;
 				}
 			}
@@ -769,10 +769,10 @@ public class Image implements Model {
 			if (height == -1) {
 				LOGGER.warn("'height' was not specified and could not be parsed from the images, defaulting to -1");
 			}
-			if (dpiX == -1) {
+			if (preciseEquals(dpiX, -1)) {
 				LOGGER.warn("'dpiX' was not specified and could not be parsed from the images, defaulting to -1");
 			}
-			if (dpiY == -1) {
+			if (preciseEquals(dpiY, -1)) {
 				LOGGER.warn("'dpiY' was not specified and could not be parsed from the images, defaulting to -1");
 			}
 		} catch (IOException e) {
@@ -780,6 +780,10 @@ public class Image implements Model {
 		} finally {
 			Closeables.closeQuietly(in);
 		}
+	}
+
+	private boolean preciseEquals(final double a, final double b) {
+		return Math.abs(a - b) < 1E-6;
 	}
 
 	/**

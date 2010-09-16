@@ -5,8 +5,8 @@ import java.io.InputStream;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -42,11 +42,12 @@ public class CMLReader extends AbstractModelReader {
 	public static class CMLHandler extends DefaultHandler {
 		protected List<Map<String, String>> models = Lists.newArrayList();
 		protected String session = null;
-		protected Set<String> tracks = Sets.newHashSet();
 		protected String track = null;
+		protected Set<String> tracks = Sets.newHashSet();
 
 		@Override
-		public void startElement(final String uri, final String localName, final String qName, final Attributes attributes) throws SAXException {
+		public void startElement(final String uri, final String localName, final String qName,
+				final Attributes attributes) throws SAXException {
 			// build our base model
 			Map<String, String> model = Maps.newHashMap();
 			for (int i = 0; i < attributes.getLength(); i++) {
@@ -76,8 +77,8 @@ public class CMLReader extends AbstractModelReader {
 	}
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(CMLReader.class);
-	protected final InputStream in;
 	protected CMLHandler handler;
+	protected final InputStream in;
 
 	/**
 	 * Create a new CMLReader.
@@ -112,7 +113,7 @@ public class CMLReader extends AbstractModelReader {
 				} else if ("urn".equals(key)) {
 					builder.path(e.getValue());
 				} else if ("orientation".equals(key)) {
-					if (e.getValue().toLowerCase().startsWith("p")) { // portrait
+					if (e.getValue().toLowerCase().charAt(0) == 'p') { // portrait
 						builder.orientation(Orientation.VERTICAL);
 					} else {
 						builder.orientation(Orientation.HORIZONTAL);
