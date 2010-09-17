@@ -11,6 +11,7 @@ import org.corewall.data.Format;
 import org.corewall.data.Model;
 
 import com.google.common.collect.Lists;
+import com.google.inject.internal.Nullable;
 
 /**
  * An abstract implemenation of the {@link Format} interface.
@@ -25,7 +26,7 @@ public abstract class AbstractFormat<T extends Model> implements Format<T> {
 	protected Filter filter;
 	protected String id;
 
-	protected AbstractFormat(final String id, final Filter filter, final Factory<T> factory) {
+	protected AbstractFormat(final String id, @Nullable final Filter filter, @Nullable final Factory<T> factory) {
 		this.id = id;
 		this.filter = filter;
 		this.factory = factory;
