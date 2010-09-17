@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.geom.Rectangle2D;
 
-import org.corewall.data.Length;
+import org.corewall.data.models.Length;
 import org.corewall.geology.models.Section;
 import org.corewall.graphics.GraphicsContext;
 import org.corewall.graphics.driver.Driver.LineStyle;

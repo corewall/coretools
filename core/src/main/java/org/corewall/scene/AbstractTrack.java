@@ -5,8 +5,8 @@ import java.awt.geom.Rectangle2D;
 import java.util.List;
 import java.util.Map;
 
-import org.corewall.data.Length;
-import org.corewall.data.Unit;
+import org.corewall.data.models.Length;
+import org.corewall.data.models.Unit;
 import org.corewall.graphics.GraphicsContext;
 import org.corewall.scene.event.SceneEventHandler;
 

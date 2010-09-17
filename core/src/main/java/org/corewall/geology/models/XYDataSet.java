@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import org.corewall.data.Unit;
+import org.corewall.data.models.Unit;
 
 /**
  * An x-y dataset that hashes x-space into fixed-size segments to provide

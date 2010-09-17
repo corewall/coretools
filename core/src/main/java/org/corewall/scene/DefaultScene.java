@@ -11,7 +11,7 @@ import java.util.Map.Entry;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.corewall.data.Unit;
+import org.corewall.data.models.Unit;
 import org.corewall.graphics.GraphicsContext;
 import org.corewall.scene.edit.CommandStack;
 import org.corewall.scene.event.DefaultSceneEventHandler;

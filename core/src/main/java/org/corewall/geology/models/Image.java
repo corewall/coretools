@@ -8,9 +8,9 @@ import java.util.Map;
 
 import org.corewall.Locator;
 import org.corewall.Platform;
-import org.corewall.data.Length;
 import org.corewall.data.Model;
-import org.corewall.data.Unit;
+import org.corewall.data.models.Length;
+import org.corewall.data.models.Unit;
 import org.corewall.graphics.internal.ImageInfo;
 import org.corewall.scene.Orientation;
 import org.slf4j.Logger;

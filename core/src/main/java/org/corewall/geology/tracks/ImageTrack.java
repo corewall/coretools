@@ -2,8 +2,8 @@ package org.corewall.geology.tracks;
 
 import java.awt.geom.Rectangle2D;
 
-import org.corewall.data.Length;
-import org.corewall.data.Unit;
+import org.corewall.data.models.Length;
+import org.corewall.data.models.Unit;
 import org.corewall.geology.models.Image;
 import org.corewall.graphics.GraphicsContext;
 import org.corewall.scene.AbstractTrack;

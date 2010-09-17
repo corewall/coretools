@@ -3,7 +3,7 @@ package org.corewall.scene;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-import org.corewall.data.Unit;
+import org.corewall.data.models.Unit;
 import org.corewall.graphics.GraphicsContext;
 import org.corewall.scene.edit.CommandStack;
 import org.corewall.scene.event.SceneEventHandler;

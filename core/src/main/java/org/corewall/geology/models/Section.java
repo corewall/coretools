@@ -3,9 +3,9 @@ package org.corewall.geology.models;
 import java.text.DecimalFormat;
 import java.util.Map;
 
-import org.corewall.data.Length;
 import org.corewall.data.Model;
-import org.corewall.data.Unit;
+import org.corewall.data.models.Length;
+import org.corewall.data.models.Unit;
 
 import com.google.common.collect.Maps;
 

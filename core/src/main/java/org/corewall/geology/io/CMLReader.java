@@ -12,10 +12,10 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.corewall.data.Length;
-import org.corewall.data.Unit;
 import org.corewall.data.io.AbstractModelReader;
 import org.corewall.data.io.Filters;
+import org.corewall.data.models.Length;
+import org.corewall.data.models.Unit;
 import org.corewall.geology.models.Image;
 import org.corewall.geology.models.Image.Builder;
 import org.corewall.scene.Orientation;
