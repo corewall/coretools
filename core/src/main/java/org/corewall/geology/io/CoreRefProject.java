@@ -10,7 +10,6 @@ import org.corewall.data.Filter;
 import org.corewall.data.Filters;
 import org.corewall.data.io.JSONModelReader;
 import org.corewall.data.io.ModelReader.Factory;
-import org.corewall.geology.models.Factories;
 import org.corewall.geology.models.Image;
 import org.corewall.geology.models.Project;
 import org.corewall.geology.models.Section;
@@ -26,14 +25,14 @@ import com.google.common.collect.ImmutableMap;
  * @author Josh Reed (jareed@andrill.org)
  */
 public class CoreRefProject implements Project {
+	private static final Map<String, String> IMAGE_DEFAULTS = ImmutableMap.of("orientation", "vertical");
+	private static final Map<String, String> IMAGE_REWRITE = ImmutableMap.of("url", "path");
 	private static final Logger LOG = LoggerFactory.getLogger(CoreRefProject.class);
-	protected Properties properties = new Properties();
 	protected String base;
 	protected String id;
-	protected ImmutableList<Section> sections;
 	protected ImmutableList<Image> images;
-	private static final Map<String, String> IMAGE_REWRITE = ImmutableMap.of("url", "path");
-	private static final Map<String, String> IMAGE_DEFAULTS = ImmutableMap.of("orientation", "vertical");
+	protected Properties properties = new Properties();
+	protected ImmutableList<Section> sections;
 
 	/**
 	 * Create a new project for the specified id at CoreRef.org
@@ -65,7 +64,8 @@ public class CoreRefProject implements Project {
 
 	public ImmutableList<Image> getImages() {
 		if (images == null) {
-			images = parse(base + "/services/" + id + "/search/type/Image", Filters.property("type", "split"), Factories.image(IMAGE_REWRITE, IMAGE_DEFAULTS));
+			images = parse(base + "/services/" + id + "/search/type/Image", Filters.property("type", "split"),
+					Image.factory(IMAGE_REWRITE, IMAGE_DEFAULTS));
 		}
 		return images;
 	}
@@ -80,7 +80,7 @@ public class CoreRefProject implements Project {
 
 	public ImmutableList<Section> getSections() {
 		if (sections == null) {
-			sections = parse(base + "/services/" + id + "/search/type/Section", Filters.all(), Factories.section());
+			sections = parse(base + "/services/" + id + "/search/type/Section", Filters.all(), Section.factory());
 		}
 		return sections;
 	}

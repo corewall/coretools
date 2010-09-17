@@ -102,7 +102,7 @@ public class CMLReader extends AbstractModelReader {
 		List<Image> images = Lists.newArrayList();
 		Filter filter = Filters.all(Filters.property("type", "core_section"), Filters.property("track", track));
 		for (Map<String, String> model : getModels(filter)) {
-			Builder builder = new Builder();
+			Builder builder = Image.builder();
 			for (Entry<String, String> e : model.entrySet()) {
 				String key = e.getKey();
 				if ("depth".equals(key)) {

@@ -16,7 +16,6 @@ import org.corewall.data.io.CSVModelReader;
 import org.corewall.data.io.CSVModelWriter;
 import org.corewall.data.io.ModelReader;
 import org.corewall.geology.models.EditableProject;
-import org.corewall.geology.models.Factories;
 import org.corewall.geology.models.Image;
 import org.corewall.geology.models.Section;
 
@@ -164,8 +163,8 @@ public class LocalProject implements EditableProject {
 	 */
 	protected void open() throws IOException {
 		readProjectFile();
-		readModelTable(getSectionsFile(), sections, Factories.section());
-		readModelTable(getImagesFile(), images, Factories.image());
+		readModelTable(getSectionsFile(), sections, Section.factory());
+		readModelTable(getImagesFile(), images, Image.factory());
 	}
 
 	protected <T extends Model> void readModelTable(final String filename, final List<T> models,

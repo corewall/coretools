@@ -3,6 +3,8 @@ package org.corewall.geology.models;
 import java.text.DecimalFormat;
 import java.util.Map;
 
+import org.corewall.data.AbstractFactory;
+import org.corewall.data.Factory;
 import org.corewall.data.Model;
 import org.corewall.data.models.Length;
 import org.corewall.data.models.Unit;
@@ -158,17 +160,57 @@ public class Section implements Model {
 		}
 	}
 
+	// keys
+	protected static final String BASE_KEY = "base";
+	protected static final String LENGTH_KEY = "length";
+	protected static final String NAME_KEY = "name";
 	private static final DecimalFormat NUM = new DecimalFormat("0.####");
-	protected Length top;
+	protected static final String TOP_KEY = "top";
+
+	/**
+	 * Creates a new Section builder.
+	 * 
+	 * @return the builder.
+	 */
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	/**
+	 * Returns a {@link Factory} that creates {@link Section}s from model maps.
+	 * The model maps are assumed to use the same property names as expected by
+	 * the Section object.
+	 * 
+	 * @return the {@link Factory} instance.
+	 */
+	public static Factory<Section> factory() {
+		return factory(null, null);
+	}
+
+	/**
+	 * Returns a factory that creates {@link Section}s from model maps. The
+	 * properties in the model map will be re-written according to the specified
+	 * rewrite map.
+	 * 
+	 * @param rewrite
+	 *            the rewrite map.
+	 * @param defaults
+	 *            the defaults.
+	 * @return the {@link Factory} instance.
+	 */
+	public static Factory<Section> factory(final Map<String, String> rewrite, final Map<String, String> defaults) {
+		return new AbstractFactory<Section>(rewrite, defaults) {
+			@Override
+			protected Section internalBuild(final Map<String, String> map) {
+				return new Section(map);
+			}
+		};
+	}
+
 	protected Length base;
 	protected Length length;
 	protected String name;
-
-	// keys
-	protected static final String BASE_KEY = "base";
-	protected static final String TOP_KEY = "top";
-	protected static final String LENGTH_KEY = "length";
-	protected static final String NAME_KEY = "name";
+	protected Length top;
 
 	/**
 	 * Builds a section from a map of properties.

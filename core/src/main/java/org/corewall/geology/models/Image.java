@@ -8,6 +8,8 @@ import java.util.Map;
 
 import org.corewall.Locator;
 import org.corewall.Platform;
+import org.corewall.data.AbstractFactory;
+import org.corewall.data.Factory;
 import org.corewall.data.Model;
 import org.corewall.data.models.Length;
 import org.corewall.data.models.Unit;
@@ -408,8 +410,8 @@ public class Image implements Model {
 		}
 	}
 
-	protected static final String BASE_KEY = "base";
 	// keys
+	protected static final String BASE_KEY = "base";
 	protected static final String DPCM_KEY = "dpcm";
 	protected static final String DPCM_X_KEY = "dpcmX";
 	protected static final String DPCM_Y_KEY = "dpcmY";
@@ -423,9 +425,48 @@ public class Image implements Model {
 	protected static final String ORIENTATION_KEY = "orientation";
 	protected static final String PATH_KEY = "path";
 	protected static final String TOP_KEY = "top";
-
 	protected static final String TYPE_KEY = "type";
 	protected static final String WIDTH_KEY = "width";
+
+	/**
+	 * Creates a new Image builder.
+	 * 
+	 * @return the builder.
+	 */
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	/**
+	 * Returns a {@link Factory} that creates {@link Image}s from model maps.
+	 * The model maps are assumed to use the same property names as expected by
+	 * the Image object.
+	 * 
+	 * @return the {@link Factory} instance.
+	 */
+	public static Factory<Image> factory() {
+		return factory(null, null);
+	}
+
+	/**
+	 * Returns a factory that creates {@link Image}s from model maps. The
+	 * properties in the model map will be re-written according to the specified
+	 * rewrite map.
+	 * 
+	 * @param rewrite
+	 *            the rewrite map.
+	 * @param defaults
+	 *            the defaults.
+	 * @return the {@link Factory} instance.
+	 */
+	public static Factory<Image> factory(final Map<String, String> rewrite, final Map<String, String> defaults) {
+		return new AbstractFactory<Image>(rewrite, defaults) {
+			@Override
+			protected Image internalBuild(final Map<String, String> map) {
+				return new Image(map);
+			}
+		};
+	}
 
 	protected Length base;
 	protected double dpiX = -1;
