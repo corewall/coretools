@@ -6,10 +6,10 @@ import java.net.URL;
 import java.util.Map;
 import java.util.Properties;
 
-import org.corewall.data.io.Filters;
+import org.corewall.data.Filter;
+import org.corewall.data.Filters;
 import org.corewall.data.io.JSONModelReader;
 import org.corewall.data.io.ModelReader.Factory;
-import org.corewall.data.io.ModelReader.Filter;
 import org.corewall.geology.models.Factories;
 import org.corewall.geology.models.Image;
 import org.corewall.geology.models.Project;

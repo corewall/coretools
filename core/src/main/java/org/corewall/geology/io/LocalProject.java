@@ -10,10 +10,10 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
+import org.corewall.data.Filters;
 import org.corewall.data.Model;
 import org.corewall.data.io.CSVModelReader;
 import org.corewall.data.io.CSVModelWriter;
-import org.corewall.data.io.Filters;
 import org.corewall.data.io.ModelReader;
 import org.corewall.geology.models.EditableProject;
 import org.corewall.geology.models.Factories;

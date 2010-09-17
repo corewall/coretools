@@ -5,7 +5,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
 
-import org.corewall.data.io.Filters;
+import org.corewall.data.Filters;
 import org.corewall.geology.io.XMLDataReader;
 import org.corewall.geology.models.XYDataSet;
 import org.junit.Test;

@@ -10,8 +10,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.corewall.data.Filters;
 import org.corewall.data.io.AbstractModelReader;
-import org.corewall.data.io.Filters;
 import org.corewall.geology.models.XYDataSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

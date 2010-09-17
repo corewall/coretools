@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 
 import org.corewall.Platform;
-import org.corewall.data.io.Filters;
+import org.corewall.data.Filters;
 import org.corewall.geology.io.CMLReader;
 import org.junit.BeforeClass;
 import org.junit.Test;
