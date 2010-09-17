@@ -33,5 +33,10 @@ public class StandardFormats extends AbstractModule {
 		formats.addBinding().toInstance(new ExcelFormat<Model>("excel:raw", 0, null));
 		formats.addBinding().toInstance(new ExcelFormat<Section>("excel:Section", "Sections", Section.factory()));
 		formats.addBinding().toInstance(new ExcelFormat<Image>("excel:Image", "Images", Image.factory()));
+
+		// json
+		formats.addBinding().toInstance(new JSONFormat<Model>("json:raw", null, null));
+		formats.addBinding().toInstance(new JSONFormat<Section>("json:Section", null, Section.factory()));
+		formats.addBinding().toInstance(new JSONFormat<Image>("json:Image", null, Image.factory()));
 	}
 }
