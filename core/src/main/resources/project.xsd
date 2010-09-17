@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+  targetNamespace="http://corewall.org/1.0/project" xmlns:project="http://corewall.org/1.0/project"
+  xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+  <xs:element name="project">
+    <xs:complexType mixed="true">
+      <xs:sequence maxOccurs="1">
+        <xs:element ref="project:name"/>
+        <xs:element ref="project:description" minOccurs="0"/>
+        <xs:element ref="project:program" minOccurs="0"/>
+        <xs:element ref="project:expedition" minOccurs="0"/>
+        <xs:element ref="project:site" minOccurs="0"/>
+        <xs:element ref="project:hole" minOccurs="0"/>
+        <xs:element ref="project:manifest"/>
+        <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##any" processContents="lax"/>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="name" type="xs:string"/>
+  <xs:element name="description" type="xs:string"/>
+  <xs:element name="program" type="xs:string"/>
+  <xs:element name="expedition" type="xs:string"/>
+  <xs:element name="site" type="xs:string"/>
+  <xs:element name="hole" type="xs:string"/>
+  <xs:element name="manifest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="project:entry" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="entry">
+    <xs:complexType>
+      <xs:attribute name="format" use="required" type="xs:string"/>
+      <xs:attribute name="path" use="required" type="xs:string"/>
+      <xs:attribute name="name" use="required" type="xs:string"/>
+      <xs:attribute name="relative" use="required" type="xs:boolean"/>
+      <xs:attribute name="type" use="required" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

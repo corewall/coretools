@@ -1,0 +1,14 @@
+<project xmlns="http://corewall.org/1.0/project" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" id="test">
+	<name>Test Project</name>
+	<description/>
+	<program>andrill</program>
+	<expedition>1</expedition>
+	<site>1</site>
+	<hole>b</hole>
+	<geo:lat>45</geo:lat>
+	<geo:long>66</geo:long>
+	<manifest>
+		<entry name="Sections" type="Section" format="tsv" path="sections.dat" relative="true"/>
+		<entry name="Images" type="Image" format="tsv" path="images.dat" relative="true"/>
+	</manifest>
+</project>
