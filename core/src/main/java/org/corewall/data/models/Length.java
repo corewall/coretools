@@ -1,7 +1,8 @@
-package org.corewall.data;
+package org.corewall.data.models;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+
 
 /**
  * A length has a value and a unit.

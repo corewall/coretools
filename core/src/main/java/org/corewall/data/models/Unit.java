@@ -1,4 +1,4 @@
-package org.corewall.data;
+package org.corewall.data.models;
 
 import java.math.BigDecimal;
 
