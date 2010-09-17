@@ -11,23 +11,6 @@ import java.util.Map;
 public interface ModelReader {
 
 	/**
-	 * Converts a model map to a POJO.
-	 * 
-	 * @param <T>
-	 *            the POJO type.
-	 */
-	interface Factory<T> {
-		T build(Map<String, String> map);
-	}
-
-	/**
-	 * Filters a list of model maps.
-	 */
-	interface Filter {
-		boolean accept(Map<String, String> map);
-	}
-
-	/**
 	 * Gets all models.
 	 * 
 	 * @return the list of models.
