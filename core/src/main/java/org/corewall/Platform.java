@@ -5,9 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Set;
 
+import org.corewall.data.formats.StandardFormats;
+import org.corewall.geology.formats.GeologyModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,6 +16,7 @@ import com.google.common.io.Closeables;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
+import com.google.inject.internal.ImmutableSet;
 import com.google.inject.internal.Sets;
 
 /**
@@ -25,6 +27,13 @@ import com.google.inject.internal.Sets;
 public final class Platform {
 	private static Injector injector = null;
 	private static Logger LOGGER = LoggerFactory.getLogger(Platform.class);
+
+	/**
+	 * The standard set of modules started when {@link Platform#start()} is
+	 * called.
+	 */
+	public static final ImmutableSet<Module> STANDARD_MODULES = ImmutableSet.of(new Module[] { new StandardFormats(),
+			new GeologyModule() });
 	private static boolean started = false;
 
 	/**
@@ -80,7 +89,7 @@ public final class Platform {
 	 * Starts the platform.
 	 */
 	public static void start() {
-		start(new HashSet<Module>(), true);
+		start(STANDARD_MODULES, true);
 	}
 
 	/**
