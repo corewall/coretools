@@ -5,6 +5,7 @@ import org.corewall.data.Model;
 import org.corewall.geology.models.Image;
 import org.corewall.geology.models.Section;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.inject.AbstractModule;
 import com.google.inject.multibindings.Multibinder;
 
@@ -38,5 +39,11 @@ public class StandardFormats extends AbstractModule {
 		formats.addBinding().toInstance(new JSONFormat<Model>("json:raw", null, null));
 		formats.addBinding().toInstance(new JSONFormat<Section>("json:Section", null, Section.factory()));
 		formats.addBinding().toInstance(new JSONFormat<Image>("json:Image", null, Image.factory()));
+
+		// coreref
+		formats.addBinding().toInstance(new JSONFormat<Section>("coreref:Section", null, Section.factory()));
+		formats.addBinding().toInstance(
+				new JSONFormat<Image>("coreref:Image", null, Image.factory(ImmutableMap.of("url", "path"),
+						ImmutableMap.of("orientation", "vertical"))));
 	}
 }
