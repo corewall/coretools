@@ -1,8 +1,8 @@
-package org.corewall.data.io;
+package org.corewall.data;
 
 import java.util.Map;
 
-import org.corewall.data.io.ModelReader.Filter;
+
 
 /**
  * Pre-defined filters.
