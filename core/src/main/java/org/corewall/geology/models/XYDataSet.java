@@ -9,7 +9,6 @@ import java.util.TreeMap;
 
 import org.corewall.data.models.Unit;
 
-
 /**
  * An x-y dataset that hashes x-space into fixed-size segments to provide
  * efficient random access and range queries. This dataset does not track units
@@ -527,7 +526,7 @@ public class XYDataSet {
 	@Override
 	public String toString() {
 		StringBuilder s = new StringBuilder();
-		s.append("DefaultDataSet[name: " + name);
+		s.append("XYDataSet[name: " + name);
 		s.append(", points: " + count);
 		s.append(", segments: " + segments.size());
 		s.append(", max: " + max);
