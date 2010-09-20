@@ -47,6 +47,9 @@ public class GeologyModule extends AbstractModule implements Module {
 		formats.addBinding().toInstance(
 				new JSONFormat<Image>("coreref:Image", null, Image.factory(ImmutableMap.of("url", "path"),
 						ImmutableMap.of("orientation", "vertical"))));
+
+		// cml
+		formats.addBinding().toInstance(new CMLFormat("cml:Image"));
 	}
 
 }
