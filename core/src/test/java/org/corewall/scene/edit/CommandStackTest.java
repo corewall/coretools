@@ -34,6 +34,9 @@ public class CommandStackTest {
 
 	private CommandStack edit;
 
+	/**
+	 * Create a new {@link CommandStack} for each test.
+	 */
 	@Before
 	public void setUp() {
 		edit = new CommandStack();

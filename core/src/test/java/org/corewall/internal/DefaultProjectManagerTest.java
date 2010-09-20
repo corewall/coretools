@@ -17,9 +17,20 @@ import org.junit.Test;
 
 import com.google.common.collect.ImmutableMap;
 
+/**
+ * Unit tests for {@link DefaultProjectManager}.
+ * 
+ * @author Josh Reed (jareed@andrill.org)
+ */
 public class DefaultProjectManagerTest {
 	protected static DefaultProjectManager projects;
 
+	/**
+	 * Create a single project manager pointed at a test directory.
+	 * 
+	 * @throws Exception
+	 *             should not happen.
+	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		URL url = DefaultProjectManagerTest.class.getResource("/projects");
@@ -29,6 +40,9 @@ public class DefaultProjectManagerTest {
 		Platform.start();
 	}
 
+	/**
+	 * Test that the project was found and parsed properly.
+	 */
 	@Test
 	public void testGetProjects() {
 		assertEquals(1, projects.getProjects().size());
@@ -58,6 +72,9 @@ public class DefaultProjectManagerTest {
 		assertEquals("66", map.get("long"));
 	}
 
+	/**
+	 * Test that the root was set.
+	 */
 	@Test
 	public void testGetRoot() {
 		assertNotNull(projects);
