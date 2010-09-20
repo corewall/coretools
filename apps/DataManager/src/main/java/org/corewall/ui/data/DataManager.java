@@ -31,8 +31,22 @@ import com.explodingpixels.macwidgets.SourceListSelectionListener;
  */
 public class DataManager implements SourceListSelectionListener {
 
+	protected static DataManager INSTANCE;
+
+	/**
+	 * Gets the instance of the DataManager.
+	 * 
+	 * @return the instance.
+	 */
+	public static DataManager getInstance() {
+		return INSTANCE;
+	}
+
 	/**
 	 * Launch the application.
+	 * 
+	 * @param args
+	 *            the program arguments.
 	 */
 	public static void main(final String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -60,24 +74,16 @@ public class DataManager implements SourceListSelectionListener {
 	protected JMenuBar menu;
 	protected SourceList projectList;
 	protected JLabel status;
+	protected WelcomePanel welcome;
 
 	/**
 	 * Create the application.
 	 */
 	public DataManager() {
-		initialize();
+		INSTANCE = this;
 
-		// load our projects
-		ProjectManager projects = Platform.getService(ProjectManager.class);
-		SourceListCategory local = new SourceListCategory("Local Projects");
-		SourceListModel projectModel = projectList.getModel();
-		projectModel.addCategory(local);
-		int count = 0;
-		for (Project project : projects.getProjects()) {
-			projectModel.addItemToCategory(new SourceListItem(project.getId()), local);
-			count++;
-		}
-		status.setText(count + " projects");
+		initialize();
+		refresh();
 	}
 
 	/**
@@ -87,7 +93,7 @@ public class DataManager implements SourceListSelectionListener {
 		frame = new JFrame("CoreWall Data Manager");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout());
-		frame.setSize(500, 500);
+		frame.setSize(800, 500);
 
 		// setup the bottom bar
 		bottomBar = new BottomBar(BottomBarSize.SMALL);
@@ -114,6 +120,24 @@ public class DataManager implements SourceListSelectionListener {
 		menu = new JMenuBar();
 		frame.setJMenuBar(menu);
 		menu.add(new JMenu("File"));
+
+		// create our welcome screen
+		welcome = new WelcomePanel();
+		contentArea.setViewportView(welcome);
+	}
+
+	public void refresh() {
+		// load our projects
+		ProjectManager projects = Platform.getService(ProjectManager.class);
+		SourceListCategory local = new SourceListCategory("Local Projects");
+		SourceListModel projectModel = projectList.getModel();
+		projectModel.addCategory(local);
+		int count = 0;
+		for (Project project : projects.getProjects()) {
+			projectModel.addItemToCategory(new SourceListItem(project.getId()), local);
+			count++;
+		}
+		status.setText(count + " projects");
 	}
 
 	public void sourceListItemSelected(final SourceListItem project) {
