@@ -1,2 +1,4 @@
 .gradle/
 build/
+apps/DataManager/miglayout-src.zip
+apps/DataManager/miglayout15-swing.jar

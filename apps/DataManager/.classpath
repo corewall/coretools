@@ -1,0 +1,10 @@
+<classpath>
+  <classpathentry kind="output" path="bin"/>
+  <classpathentry output="build/classes/main" kind="src" path="src/main/java"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER" exported="true"/>
+  <classpathentry kind="src" path="/core" exported="true"/>
+  <classpathentry sourcepath="miglayout-src.zip" kind="lib" path="miglayout15-swing.jar"/>
+  <classpathentry sourcepath="GRADLE_CACHE/net.java.dev.glazedlists/glazedlists_java15/sources/glazedlists_java15-1.8.0-sources.jar" kind="var" path="GRADLE_CACHE/net.java.dev.glazedlists/glazedlists_java15/jars/glazedlists_java15-1.8.0.jar" exported="true"/>
+  <classpathentry kind="var" path="GRADLE_CACHE/com.explodingpixels/mac_widgets/jars/mac_widgets-0.9.6-SNAPSHOT.jar" exported="true"/>
+  <classpathentry sourcepath="GRADLE_CACHE/com.jgoodies/forms/sources/forms-1.2.1-sources.jar" kind="var" path="GRADLE_CACHE/com.jgoodies/forms/jars/forms-1.2.1.jar" exported="true"/>
+</classpath>

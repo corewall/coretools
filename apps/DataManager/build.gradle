@@ -1,0 +1,17 @@
+version = '0.0.1-SNAPSHOT'
+manifest.mainAttributes(
+	'Implementation-Title': 'CoreWall Data Manager',
+	'Implementation-Version': version
+)
+
+dependencies {
+	compile project(':core')
+	compile 'com.explodingpixels:mac_widgets:0.9.6-SNAPSHOT'
+	compile 'net.java.dev.glazedlists:glazedlists_java15:1.8.0'
+}
+
+task release(dependsOn: configurations.default.buildArtifacts, type: Copy) {
+    into "$buildDir/release"
+    from configurations.default
+    from configurations.default.allArtifactFiles
+}
