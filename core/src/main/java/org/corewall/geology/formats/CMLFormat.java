@@ -106,21 +106,22 @@ public class CMLFormat extends AbstractFormat<Image> {
 	}
 
 	public List<Map<String, String>> getRaw(final URL url) throws IOException {
+		List<Map<String, String>> models = Lists.newArrayList();
 		CMLHandler handler = new CMLHandler();
 		try {
 			SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
 			handler = new CMLHandler();
 			parser.parse(url.openStream(), handler);
-			return handler.models;
+			models.addAll(handler.models);
 		} catch (ParserConfigurationException e) {
 			LOGGER.error("No SAX parser", e);
 			throw new RuntimeException("No SAX parser", e);
 		} catch (SAXException e) {
 			LOGGER.error("XML parsing error", e);
-			throw new RuntimeException("XML parsing error", e);
 		} catch (IOException e) {
 			LOGGER.error("I/O error", e);
 			throw new RuntimeException("I/O error", e);
 		}
+		return models;
 	}
 }
