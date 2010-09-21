@@ -30,6 +30,7 @@ public class DefaultProjectManager implements ProjectManager {
 	private static final String CORE_WALL = "CoreWall";
 	private static final Logger LOGGER = LoggerFactory.getLogger(DefaultProjectManager.class);
 	private static final String PROJECT_XML = "project.xml";
+	private static final String PROJECTS = "Projects";
 	protected final File root;
 
 	/**
@@ -40,11 +41,12 @@ public class DefaultProjectManager implements ProjectManager {
 		if (os.startsWith("windows")) {
 			// should point to My Documents equivalent regardless of locale
 			File docs = new JFileChooser().getFileSystemView().getDefaultDirectory();
-			root = new File(docs, CORE_WALL);
+			root = new File(docs, CORE_WALL + File.separator + PROJECTS);
 		} else if (os.startsWith("mac os")) {
-			root = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + CORE_WALL);
+			root = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + CORE_WALL
+					+ File.separator + PROJECTS);
 		} else {
-			root = new File(System.getProperty("user.home") + File.separator + CORE_WALL);
+			root = new File(System.getProperty("user.home") + File.separator + CORE_WALL + File.separator + PROJECTS);
 		}
 		root.mkdirs();
 	}
