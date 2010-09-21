@@ -23,6 +23,7 @@ import com.explodingpixels.macwidgets.SourceListCategory;
 import com.explodingpixels.macwidgets.SourceListItem;
 import com.explodingpixels.macwidgets.SourceListModel;
 import com.explodingpixels.macwidgets.SourceListSelectionListener;
+import com.google.common.collect.ImmutableList;
 
 /**
  * The Data Manager application.
@@ -30,7 +31,6 @@ import com.explodingpixels.macwidgets.SourceListSelectionListener;
  * @author Josh Reed (jareed@andrill.org)
  */
 public class DataManager implements SourceListSelectionListener {
-
 	protected static DataManager INSTANCE;
 
 	/**
@@ -73,6 +73,8 @@ public class DataManager implements SourceListSelectionListener {
 	protected JFrame frame;
 	protected JMenuBar menu;
 	protected SourceList projectList;
+	protected ImmutableList<Project> projects = null;
+	protected Project selected = null;
 	protected JLabel status;
 	protected WelcomePanel welcome;
 
@@ -84,6 +86,15 @@ public class DataManager implements SourceListSelectionListener {
 
 		initialize();
 		refresh();
+	}
+
+	/**
+	 * Gets the selected project.
+	 * 
+	 * @return the selected project.
+	 */
+	public Project getSelectedProject() {
+		return selected;
 	}
 
 	/**
@@ -126,21 +137,37 @@ public class DataManager implements SourceListSelectionListener {
 		contentArea.setViewportView(welcome);
 	}
 
+	/**
+	 * Refreshes the project list.
+	 */
 	public void refresh() {
-		// load our projects
-		ProjectManager projects = Platform.getService(ProjectManager.class);
-		SourceListCategory local = new SourceListCategory("Local Projects");
+		// remove all projects
 		SourceListModel projectModel = projectList.getModel();
-		projectModel.addCategory(local);
-		int count = 0;
-		for (Project project : projects.getProjects()) {
-			projectModel.addItemToCategory(new SourceListItem(project.getId()), local);
-			count++;
+		while (projectModel.getCategories().size() > 0) {
+			projectModel.removeCategoryAt(0);
 		}
-		status.setText(count + " projects");
+		selected = null;
+		projectList.setSelectedItem(null);
+
+		// load all local projects
+		ProjectManager projectManager = Platform.getService(ProjectManager.class);
+		projects = projectManager.getProjects();
+		SourceListCategory local = new SourceListCategory("Local");
+		projectModel.addCategory(local);
+		for (Project project : projects) {
+			projectModel.addItemToCategory(new SourceListItem(project.getId()), local);
+		}
+
+		// set our status
+		status.setText(projects.size() + " project" + (projects.size() == 1 ? "" : "s"));
 	}
 
 	public void sourceListItemSelected(final SourceListItem project) {
-		// TODO: show the project info panel
+		selected = null;
+		for (Project p : projects) {
+			if (p.getId() == project.getText()) {
+				selected = p;
+			}
+		}
 	}
 }
