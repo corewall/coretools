@@ -17,7 +17,7 @@ import org.xml.sax.helpers.DefaultHandler;
  * 
  * @author Josh Reed (jareed@andrill.org)
  */
-public class ProjectParser extends DefaultHandler {
+public class ProjectReader extends DefaultHandler {
 	protected StringBuilder buffer = new StringBuilder();
 	protected final File file;
 	protected final Locator locator;
@@ -29,7 +29,7 @@ public class ProjectParser extends DefaultHandler {
 	 * @param file
 	 *            the project file.
 	 */
-	public ProjectParser(final File file) {
+	public ProjectReader(final File file) {
 		project = new DefaultProject();
 		project.setPath(file.getParentFile());
 		locator = Platform.getService(Locator.class);

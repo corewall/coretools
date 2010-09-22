@@ -78,7 +78,7 @@ public class DefaultProjectManager implements ProjectManager {
 
 	protected Project parseProject(final File file) {
 		FileInputStream in = null;
-		ProjectParser handler = new ProjectParser(file);
+		ProjectReader handler = new ProjectReader(file);
 		Project project = null;
 		try {
 			in = new FileInputStream(file);
