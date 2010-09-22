@@ -19,6 +19,7 @@ import org.xml.sax.SAXException;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
 import com.google.common.io.Closeables;
+import com.google.inject.Singleton;
 import com.google.inject.internal.Lists;
 
 /**
@@ -26,6 +27,7 @@ import com.google.inject.internal.Lists;
  * 
  * @author Josh Reed (jareed@andrill.org)
  */
+@Singleton
 public class DefaultProjectManager implements ProjectManager {
 	private static final String CORE_WALL = "CoreWall";
 	private static final Logger LOGGER = LoggerFactory.getLogger(DefaultProjectManager.class);
