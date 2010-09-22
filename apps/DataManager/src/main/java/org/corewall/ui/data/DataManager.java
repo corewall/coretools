@@ -147,7 +147,6 @@ public class DataManager implements SourceListSelectionListener {
 			projectModel.removeCategoryAt(0);
 		}
 		selected = null;
-		projectList.setSelectedItem(null);
 
 		// load all local projects
 		ProjectManager projectManager = Platform.getService(ProjectManager.class);
@@ -164,6 +163,9 @@ public class DataManager implements SourceListSelectionListener {
 
 	public void sourceListItemSelected(final SourceListItem project) {
 		selected = null;
+		if (project == null) {
+			return;
+		}
 		for (Project p : projects) {
 			if (p.getId() == project.getText()) {
 				selected = p;
