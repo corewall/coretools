@@ -2,7 +2,10 @@ package org.corewall.internal;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
 
 import javax.swing.JFileChooser;
@@ -63,6 +66,31 @@ public class DefaultProjectManager implements ProjectManager {
 		this.root = root;
 	}
 
+	public void add(final Project project) throws IOException, ProjectExistsException {
+		// check for uniqueness
+		boolean unique = true;
+		for (Project p : getProjects()) {
+			if (p.getId().equals(project.getId())) {
+				unique = false;
+			}
+		}
+		if (!unique) {
+			throw new ProjectExistsException(project.getId());
+		}
+
+		// write out the file
+		File dir = new File(root, project.getId());
+		dir.mkdirs();
+
+		ProjectWriter writer = null;
+		try {
+			writer = new ProjectWriter(new FileWriter(new File(dir, PROJECT_XML)));
+			writer.write(project);
+		} finally {
+			Closeables.closeQuietly(writer);
+		}
+	}
+
 	public ImmutableList<Project> getProjects() {
 		Builder<Project> projects = ImmutableList.builder();
 		for (File file : scanProjects()) {
@@ -76,6 +104,34 @@ public class DefaultProjectManager implements ProjectManager {
 
 	public File getRoot() {
 		return root;
+	}
+
+	@Override
+	public void overwrite(final Project project) throws IOException {
+		// find the path
+		URL path = null;
+		for (Project p : getProjects()) {
+			if (p.getId().equals(project.getId())) {
+				path = p.getPath();
+			}
+		}
+
+		ProjectWriter writer = null;
+		try {
+			File dir;
+			if (path == null) {
+				dir = new File(root, project.getId());
+			} else {
+				dir = new File(path.toURI());
+			}
+			dir.mkdirs();
+			writer = new ProjectWriter(new FileWriter(new File(dir, PROJECT_XML)));
+			writer.write(project);
+		} catch (URISyntaxException e) {
+			throw new IOException("Invalid URI", e);
+		} finally {
+			Closeables.closeQuietly(writer);
+		}
 	}
 
 	protected Project parseProject(final File file) {
