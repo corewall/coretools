@@ -89,6 +89,15 @@ public class DataManager implements SourceListSelectionListener {
 	}
 
 	/**
+	 * Gets the application window.
+	 * 
+	 * @return
+	 */
+	public JFrame getApplicationWindow() {
+		return frame;
+	}
+
+	/**
 	 * Gets the selected project.
 	 * 
 	 * @return the selected project.
@@ -130,7 +139,9 @@ public class DataManager implements SourceListSelectionListener {
 		// setup the menu
 		menu = new JMenuBar();
 		frame.setJMenuBar(menu);
-		menu.add(new JMenu("File"));
+		JMenu fileMenu = new JMenu("File");
+		fileMenu.add(new NewProjectAction());
+		menu.add(fileMenu);
 
 		// create our welcome screen
 		welcome = new WelcomePanel();
