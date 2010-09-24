@@ -16,7 +16,7 @@ import com.google.inject.internal.Lists;
 import com.google.inject.internal.Maps;
 
 /**
- * A default implementation of the Project interface.
+ * A default implementation of the {@link Project} interface.
  * 
  * @author Josh Reed (jareed@andrill.org)
  */
@@ -64,19 +64,13 @@ public class DefaultProject implements Project {
 	 * @param entry
 	 *            the entry.
 	 */
-	public void add(final ManifestEntry entry) {
+	public void addEntry(final ManifestEntry entry) {
 		manifest.add(entry);
 	}
 
-	/**
-	 * Gets the specified property.
-	 * 
-	 * @param key
-	 *            the key.
-	 * @return the value.
-	 */
-	public String get(final String key) {
-		return properties.get(key);
+	@Override
+	public String getAttribute(final Attr attr) {
+		return properties.get(attr.toString());
 	}
 
 	public String getId() {
@@ -100,19 +94,13 @@ public class DefaultProject implements Project {
 	}
 
 	/**
-	 * Sets the specified property.
+	 * Removes a standard attribute.
 	 * 
-	 * @param key
-	 *            the key.
-	 * @param value
-	 *            the value.
+	 * @param attr
+	 *            the attribute.
 	 */
-	public void put(final String key, final String value) {
-		if (value == null) {
-			properties.remove(key);
-		} else {
-			properties.put(key, value);
-		}
+	public void removeAttribute(final Attr attr) {
+		properties.remove(attr.toString());
 	}
 
 	/**
@@ -121,18 +109,24 @@ public class DefaultProject implements Project {
 	 * @param entry
 	 *            the entry.
 	 */
-	public void remove(final ManifestEntry entry) {
+	public void removeEntry(final ManifestEntry entry) {
 		manifest.remove(entry);
 	}
 
 	/**
-	 * Removes the specified property.
+	 * Sets a standard attribute.
 	 * 
-	 * @param key
-	 *            the key.
+	 * @param attr
+	 *            the attribute.
+	 * @param value
+	 *            the attribute value.
 	 */
-	public void remove(final String key) {
-		properties.remove(key);
+	public void setAttribute(final Attr attr, final String value) {
+		if (value == null) {
+			removeAttribute(attr);
+		} else {
+			properties.put(attr.toString(), value);
+		}
 	}
 
 	/**

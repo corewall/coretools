@@ -11,6 +11,12 @@ import com.google.common.collect.ImmutableMap;
  * @author Josh Reed (jareed@andrill.org)
  */
 public interface Project {
+	/**
+	 * The standard attributes.
+	 */
+	enum Attr {
+		DESCRIPTION, EXPEDITION, HOLE, LATITUDE, LONGITUDE, PROGRAM, SITE
+	}
 
 	/**
 	 * Defines a pointer to a data file.
@@ -44,6 +50,25 @@ public interface Project {
 		 */
 		String getType();
 	}
+
+	/**
+	 * The Geo Schema URI.
+	 */
+	String GEO_URI = "http://www.w3.org/2003/01/geo/wgs84_pos#";
+
+	/**
+	 * The Project Schema URI.
+	 */
+	String PROJECT_URI = "http://corewall.org/1.0/project";
+
+	/**
+	 * Gets the project attribute value.
+	 * 
+	 * @param attr
+	 *            the attribute.
+	 * @return the value or null if not set.
+	 */
+	String getAttribute(Attr attr);
 
 	/**
 	 * Gets the id.

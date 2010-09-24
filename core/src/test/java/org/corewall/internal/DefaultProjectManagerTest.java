@@ -11,11 +11,10 @@ import java.util.List;
 
 import org.corewall.Platform;
 import org.corewall.data.Project;
+import org.corewall.data.Project.Attr;
 import org.corewall.data.Project.ManifestEntry;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import com.google.common.collect.ImmutableMap;
 
 /**
  * Unit tests for {@link DefaultProjectManager}.
@@ -62,14 +61,13 @@ public class DefaultProjectManagerTest {
 		assertEquals("Image", e2.getType());
 		assertEquals("tsv", e2.getFormat());
 		assertNull(e2.getPath());
-		ImmutableMap<String, String> map = p.getProperties();
-		assertNull(map.get("description"));
-		assertEquals("andrill", map.get("program"));
-		assertEquals("1", map.get("expedition"));
-		assertEquals("1", map.get("site"));
-		assertEquals("b", map.get("hole"));
-		assertEquals("45", map.get("lat"));
-		assertEquals("66", map.get("long"));
+		assertNull(p.getAttribute(Attr.DESCRIPTION));
+		assertEquals("andrill", p.getAttribute(Attr.PROGRAM));
+		assertEquals("1", p.getAttribute(Attr.EXPEDITION));
+		assertEquals("1", p.getAttribute(Attr.SITE));
+		assertEquals("b", p.getAttribute(Attr.HOLE));
+		assertEquals("45", p.getAttribute(Attr.LATITUDE));
+		assertEquals("66", p.getAttribute(Attr.LONGITUDE));
 	}
 
 	/**

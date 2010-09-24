@@ -20,6 +20,7 @@ import javax.swing.event.DocumentListener;
 import net.miginfocom.swing.MigLayout;
 
 import org.corewall.data.Project;
+import org.corewall.data.Project.Attr;
 import org.corewall.internal.DefaultProject;
 
 /**
@@ -174,13 +175,13 @@ public class NewProjectDialog extends JDialog implements ActionListener, Documen
 			project = new DefaultProject();
 			project.setId(identifierField.getText());
 			project.setName(nameField.getText());
-			setProjectProperty(project, "description", descriptionField.getText());
-			setProjectProperty(project, "lat", latitudeField.getText());
-			setProjectProperty(project, "long", longitudeField.getText());
-			setProjectProperty(project, "program", programField.getText());
-			setProjectProperty(project, "expedition", expeditionField.getText());
-			setProjectProperty(project, "site", siteField.getText());
-			setProjectProperty(project, "hole", holeField.getText());
+			setProjectProperty(project, Attr.DESCRIPTION, descriptionField.getText());
+			setProjectProperty(project, Attr.LATITUDE, latitudeField.getText());
+			setProjectProperty(project, Attr.LONGITUDE, longitudeField.getText());
+			setProjectProperty(project, Attr.PROGRAM, programField.getText());
+			setProjectProperty(project, Attr.EXPEDITION, expeditionField.getText());
+			setProjectProperty(project, Attr.SITE, siteField.getText());
+			setProjectProperty(project, Attr.HOLE, holeField.getText());
 		} else if ("Cancel".equals(e.getActionCommand())) {
 			project = null;
 		}
@@ -209,9 +210,9 @@ public class NewProjectDialog extends JDialog implements ActionListener, Documen
 		updateButtonState();
 	}
 
-	private void setProjectProperty(final DefaultProject project, final String name, final String text) {
+	private void setProjectProperty(final DefaultProject project, final Project.Attr attr, final String text) {
 		if (!"".equals(text.trim())) {
-			project.put(name, text);
+			project.setAttribute(attr, text);
 		}
 	}
 

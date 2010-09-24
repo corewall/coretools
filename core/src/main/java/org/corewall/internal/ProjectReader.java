@@ -7,6 +7,7 @@ import java.net.URL;
 import org.corewall.Locator;
 import org.corewall.Platform;
 import org.corewall.data.Project;
+import org.corewall.data.Project.Attr;
 import org.corewall.internal.DefaultProject.DefaultManifestEntry;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -51,20 +52,27 @@ public class ProjectReader extends DefaultHandler {
 
 	@Override
 	public void endElement(final String uri, final String localName, final String qName) throws SAXException {
-		if ("name".equals(qName)) {
+		if (Project.PROJECT_URI.equals(uri) && "name".equals(localName)) {
 			String value = val();
 			if (value == null) {
 				throw new SAXException("'name' element must be specified and non-empty");
 			} else {
 				project.setName(value);
 			}
-		} else if (!"manifest".equals(qName)) {
-			String name = qName;
-			int i = name.indexOf(':');
-			if (i > -1) {
-				name = name.substring(i + 1);
-			}
-			project.put(name, val());
+		} else if (Project.PROJECT_URI.equals(uri) && "description".equals(localName)) {
+			project.setAttribute(Attr.DESCRIPTION, val());
+		} else if (Project.PROJECT_URI.equals(uri) && "program".equals(localName)) {
+			project.setAttribute(Attr.PROGRAM, val());
+		} else if (Project.PROJECT_URI.equals(uri) && "expedition".equals(localName)) {
+			project.setAttribute(Attr.EXPEDITION, val());
+		} else if (Project.PROJECT_URI.equals(uri) && "site".equals(localName)) {
+			project.setAttribute(Attr.SITE, val());
+		} else if (Project.PROJECT_URI.equals(uri) && "hole".equals(localName)) {
+			project.setAttribute(Attr.HOLE, val());
+		} else if (Project.GEO_URI.equals(uri) && "lat".equals(localName)) {
+			project.setAttribute(Attr.LATITUDE, val());
+		} else if (Project.GEO_URI.equals(uri) && "long".equals(localName)) {
+			project.setAttribute(Attr.LONGITUDE, val());
 		}
 	}
 
@@ -86,9 +94,9 @@ public class ProjectReader extends DefaultHandler {
 	public void startElement(final String uri, final String localName, final String qName, final Attributes attributes)
 			throws SAXException {
 		buffer = new StringBuilder();
-		if ("project".equals(qName)) {
+		if (Project.PROJECT_URI.equals(uri) && "project".equals(localName)) {
 			project.setId(checkAttr("id", attributes.getValue("id")));
-		} else if ("entry".equals(qName)) {
+		} else if (Project.PROJECT_URI.equals(uri) && "entry".equals(localName)) {
 			String name = checkAttr("name", attributes.getValue("name"));
 			String type = checkAttr("type", attributes.getValue("type"));
 			String format = checkAttr("format", attributes.getValue("format"));
@@ -107,7 +115,7 @@ public class ProjectReader extends DefaultHandler {
 			} else {
 				url = locator.getResource(location);
 			}
-			project.add(new DefaultManifestEntry(name, type, format, url));
+			project.addEntry(new DefaultManifestEntry(name, type, format, url));
 		}
 	}
 

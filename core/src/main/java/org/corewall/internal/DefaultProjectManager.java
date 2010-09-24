@@ -84,7 +84,9 @@ public class DefaultProjectManager implements ProjectManager {
 		Project project = null;
 		try {
 			in = new FileInputStream(file);
-			SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+			SAXParserFactory factory = SAXParserFactory.newInstance();
+			factory.setNamespaceAware(true);
+			SAXParser parser = factory.newSAXParser();
 			parser.parse(in, handler);
 			project = handler.getProject();
 		} catch (ParserConfigurationException e) {
