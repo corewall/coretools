@@ -1,7 +1,6 @@
 package org.corewall.ui.data;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 
@@ -14,10 +13,15 @@ import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 import org.corewall.Platform;
 import org.corewall.ProjectManager;
 import org.corewall.data.Project;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.explodingpixels.macwidgets.BottomBar;
 import com.explodingpixels.macwidgets.BottomBarSize;
@@ -37,6 +41,7 @@ import com.google.common.collect.ImmutableList;
  */
 public class DataManager implements SourceListSelectionListener {
 	protected static DataManager INSTANCE;
+	protected static final Logger LOG = LoggerFactory.getLogger(DataManager.class);
 
 	/**
 	 * Gets the instance of the DataManager.
@@ -54,21 +59,34 @@ public class DataManager implements SourceListSelectionListener {
 	 *            the program arguments.
 	 */
 	public static void main(final String[] args) {
-		EventQueue.invokeLater(new Runnable() {
+		// tweak for better Mac integration
+		String os = System.getProperty("os.name").toLowerCase();
+		if (os.startsWith("mac os x")) {
+			System.setProperty("apple.laf.useScreenMenuBar", "true");
+			System.setProperty("com.apple.mrj.application.apple.menu.about.name", "CoreWall Data Manager");
+		}
+
+		// set the native look and feel
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException e) {
+			LOG.warn("Unable to set native look and feel", e);
+		} catch (InstantiationException e) {
+			LOG.warn("Unable to set native look and feel", e);
+		} catch (IllegalAccessException e) {
+			LOG.warn("Unable to set native look and feel", e);
+		} catch (UnsupportedLookAndFeelException e) {
+			LOG.warn("Unable to set native look and feel", e);
+		}
+
+		// start our platform
+		Platform.start();
+
+		// start the data manager
+		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				try {
-					// use the screen menu bar
-					System.setProperty("apple.laf.useScreenMenuBar", "true");
-
-					// start our platform
-					Platform.start();
-
-					// create the data manager
-					DataManager window = new DataManager();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				DataManager window = new DataManager();
+				window.frame.setVisible(true);
 			}
 		});
 	}
@@ -89,7 +107,6 @@ public class DataManager implements SourceListSelectionListener {
 	 */
 	public DataManager() {
 		INSTANCE = this;
-
 		initialize();
 		refresh();
 	}
