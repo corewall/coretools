@@ -97,10 +97,11 @@ public class DataManager implements SourceListSelectionListener {
 	protected JFrame frame;
 	protected JMenuBar menu;
 	protected SourceList projectList;
+	protected ProjectPanel projectPanel;
 	protected ImmutableList<Project> projects = null;
 	protected Project selected = null;
 	protected JLabel status;
-	protected WelcomePanel welcome;
+	protected WelcomePanel welcomePanel;
 
 	/**
 	 * Create the application.
@@ -187,8 +188,11 @@ public class DataManager implements SourceListSelectionListener {
 		menu.add(fileMenu);
 
 		// create our welcome screen
-		welcome = new WelcomePanel();
-		contentArea.setViewportView(welcome);
+		welcomePanel = new WelcomePanel();
+		contentArea.setViewportView(welcomePanel);
+
+		// create our project panel
+		projectPanel = new ProjectPanel();
 	}
 
 	/**
@@ -218,11 +222,14 @@ public class DataManager implements SourceListSelectionListener {
 	public void sourceListItemSelected(final SourceListItem project) {
 		selected = null;
 		if (project == null) {
+			contentArea.setViewportView(welcomePanel);
 			return;
 		}
 		for (Project p : projects) {
 			if (p.getId() == project.getText()) {
 				selected = p;
+				contentArea.setViewportView(projectPanel);
+				projectPanel.setProject(selected);
 			}
 		}
 	}
