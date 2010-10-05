@@ -1,10 +1,12 @@
 package org.corewall.ui.data;
 
+import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 
+import javax.swing.Action;
 import javax.swing.JEditorPane;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
@@ -50,7 +52,10 @@ public class WelcomePanel extends JEditorPane implements HyperlinkListener {
 
 	public void hyperlinkUpdate(final HyperlinkEvent e) {
 		if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-			System.out.println(e.getURL().getFile());
+			Action action = DataManager.getInstance().getActionMap().get(e.getURL().getFile());
+			if (action != null) {
+				action.actionPerformed(new ActionEvent(e, ActionEvent.ACTION_PERFORMED, e.getDescription()));
+			}
 		}
 	}
 }

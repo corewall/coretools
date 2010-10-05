@@ -2,13 +2,18 @@ package org.corewall.ui.data;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 
+import javax.swing.ActionMap;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.KeyStroke;
 
 import org.corewall.Platform;
 import org.corewall.ProjectManager;
@@ -68,6 +73,7 @@ public class DataManager implements SourceListSelectionListener {
 		});
 	}
 
+	protected ActionMap actionMap;
 	protected BottomBar bottomBar;
 	protected JScrollPane contentArea;
 	protected JFrame frame;
@@ -86,6 +92,15 @@ public class DataManager implements SourceListSelectionListener {
 
 		initialize();
 		refresh();
+	}
+
+	/**
+	 * Gets the action map for this application.
+	 * 
+	 * @return the action map.
+	 */
+	public ActionMap getActionMap() {
+		return actionMap;
 	}
 
 	/**
@@ -110,10 +125,14 @@ public class DataManager implements SourceListSelectionListener {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		// create the frame
 		frame = new JFrame("CoreWall Data Manager");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout());
 		frame.setSize(800, 500);
+
+		// setup the action map
+		actionMap = new ActionMap();
 
 		// setup the bottom bar
 		bottomBar = new BottomBar(BottomBarSize.SMALL);
@@ -140,7 +159,14 @@ public class DataManager implements SourceListSelectionListener {
 		menu = new JMenuBar();
 		frame.setJMenuBar(menu);
 		JMenu fileMenu = new JMenu("File");
-		fileMenu.add(new NewProjectAction());
+		{
+			NewProjectAction action = new NewProjectAction();
+			JMenuItem item = new JMenuItem(action);
+			item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, Toolkit.getDefaultToolkit()
+					.getMenuShortcutKeyMask()));
+			fileMenu.add(item);
+			actionMap.put("project/new", action);
+		}
 		menu.add(fileMenu);
 
 		// create our welcome screen
