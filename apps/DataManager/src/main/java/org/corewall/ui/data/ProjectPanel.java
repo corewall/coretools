@@ -39,13 +39,12 @@ public class ProjectPanel extends JPanel {
 	 */
 	public ProjectPanel() {
 		setLayout(new BorderLayout());
-		setBorder(new EmptyBorder(10, 10, 10, 10));
 		setBackground(Color.white);
 
 		// create our label
 		label = new JLabel("");
 		label.setFont(new Font(label.getFont().getName(), Font.BOLD, 20));
-		label.setBorder(new EmptyBorder(0, 0, 10, 0));
+		label.setBorder(new EmptyBorder(10, 10, 10, 10));
 		add(label, BorderLayout.NORTH);
 
 		// our list of manifest entries
@@ -91,6 +90,7 @@ public class ProjectPanel extends JPanel {
 				});
 		table = MacWidgetFactory.createITunesTable(model);
 		table.setFillsViewportHeight(true);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
 		JScrollPane scrollPane = new JScrollPane(table);
 		add(scrollPane, BorderLayout.CENTER);
 	}
