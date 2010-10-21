@@ -1,4 +1,4 @@
-package org.corewall.ui.data;
+package org.corewall.ui.data.internal;
 
 import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
@@ -10,6 +10,8 @@ import javax.swing.Action;
 import javax.swing.JEditorPane;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
+
+import org.corewall.ui.data.DataManager;
 
 import com.google.common.io.Closeables;
 

@@ -1,4 +1,4 @@
-package org.corewall.ui.data;
+package org.corewall.ui.data.internal;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -10,6 +10,7 @@ import org.corewall.Platform;
 import org.corewall.ProjectManager;
 import org.corewall.ProjectManager.ProjectExistsException;
 import org.corewall.data.Project;
+import org.corewall.ui.data.DataManager;
 
 /**
  * An action for creating a new {@link Project}.

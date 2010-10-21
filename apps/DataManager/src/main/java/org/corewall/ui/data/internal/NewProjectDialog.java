@@ -1,4 +1,4 @@
-package org.corewall.ui.data;
+package org.corewall.ui.data.internal;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
