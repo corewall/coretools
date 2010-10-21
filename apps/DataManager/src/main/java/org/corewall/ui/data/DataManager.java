@@ -2,6 +2,7 @@ package org.corewall.ui.data;
 
 import java.awt.BorderLayout;
 import java.awt.Toolkit;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ActionMap;
@@ -20,6 +21,10 @@ import javax.swing.UnsupportedLookAndFeelException;
 import org.corewall.Platform;
 import org.corewall.ProjectManager;
 import org.corewall.data.Project;
+import org.corewall.ui.data.internal.DataManagerModule;
+import org.corewall.ui.data.internal.NewProjectAction;
+import org.corewall.ui.data.internal.ProjectPanel;
+import org.corewall.ui.data.internal.WelcomePanel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,6 +45,7 @@ import com.google.common.collect.ImmutableList;
  * @author Josh Reed (jareed@andrill.org)
  */
 public class DataManager implements SourceListSelectionListener {
+	public static final String APPLICATION_ID = "DataManager";
 	protected static DataManager INSTANCE;
 	protected static final Logger LOG = LoggerFactory.getLogger(DataManager.class);
 
@@ -80,7 +86,7 @@ public class DataManager implements SourceListSelectionListener {
 		}
 
 		// start our platform
-		Platform.start();
+		Platform.start(true, true, new DataManagerModule());
 
 		// start the data manager
 		SwingUtilities.invokeLater(new Runnable() {
