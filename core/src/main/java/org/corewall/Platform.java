@@ -16,7 +16,6 @@ import com.google.common.io.Closeables;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
-import com.google.inject.internal.ImmutableSet;
 import com.google.inject.internal.Sets;
 
 /**
@@ -32,8 +31,7 @@ public final class Platform {
 	 * The standard set of modules started when {@link Platform#start()} is
 	 * called.
 	 */
-	public static final ImmutableSet<Module> STANDARD_MODULES = ImmutableSet.of(new Module[] { new StandardFormats(),
-			new GeologyModule() });
+	private static final Module[] STANDARD_MODULES = new Module[] { new StandardFormats(), new GeologyModule() };
 	private static boolean started = false;
 
 	/**
@@ -89,25 +87,36 @@ public final class Platform {
 	 * Starts the platform.
 	 */
 	public static void start() {
-		start(STANDARD_MODULES, true);
+		start(true, true);
 	}
 
 	/**
 	 * Starts the platform with the specified set of modules and the discover
 	 * flag.
 	 * 
-	 * @param modules
-	 *            the set of modules.
+	 * @param standard
+	 *            the flag indicating whether standard modules should be
+	 *            included.
 	 * @param discover
 	 *            the discover flag.
+	 * @param modules
+	 *            the set of additional modules to include.
 	 */
-	public static void start(final Set<Module> modules, final boolean discover) {
+	public static void start(final boolean standard, final boolean discover, final Module... modules) {
 		if (!started) {
 			started = true;
 
 			// build our final set of modules to start
 			Set<Module> set = Sets.newHashSet();
-			set.addAll(modules);
+
+			// add our standard modules
+			if (standard) {
+				for (Module m : STANDARD_MODULES) {
+					set.add(m);
+				}
+			}
+
+			// discover modules if enabled
 			if (discover) {
 				try {
 					for (URL url : Collections.list(Platform.class.getClassLoader().getResources(
@@ -119,9 +128,14 @@ public final class Platform {
 				}
 			}
 
+			// add all of the additional modules
+			for (Module m : modules) {
+				set.add(m);
+			}
+
 			// start the modules
-			LOGGER.info("Starting modules: {}", modules);
-			injector = Guice.createInjector(modules);
+			LOGGER.info("Starting modules: {}", set);
+			injector = Guice.createInjector(set);
 		}
 	}
 
