@@ -8,7 +8,6 @@ import java.awt.geom.Rectangle2D;
 import java.net.URL;
 import java.util.List;
 
-
 /**
  * The interface for a 2D graphics driver.
  * 
@@ -19,7 +18,21 @@ public interface Driver {
 	 * Arc styles.
 	 */
 	public enum ArcStyle {
-		CLOSED, OPEN, SECTOR
+		/**
+		 * Closed arc with a straight line from start point to end point.
+		 */
+		CLOSED,
+
+		/**
+		 * Open arc.
+		 */
+		OPEN,
+
+		/**
+		 * Closed arc with a straight line from start point to circle center to
+		 * end point.
+		 */
+		SECTOR
 	}
 
 	/**
@@ -31,7 +44,7 @@ public interface Driver {
 
 		public Image(final URL url) {
 			this.url = url;
-			this.isVertical = true;
+			isVertical = true;
 		}
 
 		public Image(final URL url, final boolean isVertical) {
@@ -44,7 +57,25 @@ public interface Driver {
 	 * Line styles.
 	 */
 	public enum LineStyle {
-		DASH_DOTTED, DASHED, DOTTED, SOLID
+		/**
+		 * Mixed dashed and dotted line.
+		 */
+		DASH_DOTTED,
+
+		/**
+		 * Dashed line.
+		 */
+		DASHED,
+
+		/**
+		 * Dotted line.
+		 */
+		DOTTED,
+
+		/**
+		 * Solid line.
+		 */
+		SOLID
 	}
 
 	/**

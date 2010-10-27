@@ -11,7 +11,25 @@ public abstract class Fill {
 	 * The fill style.
 	 */
 	public enum Style {
-		COLOR, GRADIENT, MULTI, TEXTURE
+		/**
+		 * Background color.
+		 */
+		COLOR,
+
+		/**
+		 * Color gradient.
+		 */
+		GRADIENT,
+
+		/**
+		 * Multiple fills.
+		 */
+		MULTI,
+
+		/**
+		 * Image.
+		 */
+		TEXTURE
 	}
 
 	protected final Style style;
