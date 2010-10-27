@@ -7,10 +7,14 @@ import javax.swing.Action;
  * 
  * @author Josh Reed (jareed@andrill.org)
  * 
- * @param <E>
- *            the target class.
  */
-public interface MenuContribution<E> {
+public interface MenuContribution {
+	/**
+	 * Selection condition to control enablement.
+	 */
+	interface Condition {
+		void selected(Object selection);
+	}
 
 	/**
 	 * Gets the action to perform.
@@ -27,26 +31,16 @@ public interface MenuContribution<E> {
 	String getApplication();
 
 	/**
+	 * Gets the enablement condition.
+	 * 
+	 * @return the condition or null.
+	 */
+	Condition getCondition();
+
+	/**
 	 * Gets the menu path.
 	 * 
 	 * @return the menu path.
 	 */
 	String getMenu();
-
-	/**
-	 * Gets the target class.
-	 * 
-	 * @return the target class or null.
-	 */
-	Class<E> getTargetClass();
-
-	/**
-	 * Tests whether the contribution should be enabled for the specified target
-	 * or not.
-	 * 
-	 * @param target
-	 *            the target.
-	 * @return true if it is enabled, false otherwise.
-	 */
-	boolean isEnabled(E target);
 }

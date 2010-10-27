@@ -21,7 +21,7 @@ import com.google.inject.Singleton;
 @Singleton
 public class DefaultMenuRegistry implements MenuRegistry {
 	private static final Logger LOG = LoggerFactory.getLogger(DefaultMenuRegistry.class);
-	protected Multimap<String, MenuContribution<?>> contributions;
+	protected Multimap<String, MenuContribution> contributions;
 
 	DefaultMenuRegistry() {
 		LOG.debug("Initialized");
@@ -29,19 +29,19 @@ public class DefaultMenuRegistry implements MenuRegistry {
 	}
 
 	@Override
-	public ImmutableList<MenuContribution<?>> getMenuContributions(final String application) {
+	public ImmutableList<MenuContribution> getMenuContributions(final String application) {
 		return ImmutableList.copyOf(contributions.get(application));
 	}
 
 	@Inject(optional = true)
-	void inject(final Set<MenuContribution<?>> injected) {
-		for (MenuContribution<?> m : injected) {
+	void inject(final Set<MenuContribution> injected) {
+		for (MenuContribution m : injected) {
 			contributions.put(m.getApplication(), m);
 		}
 	}
 
 	@Override
-	public void register(final MenuContribution<?> contribution) {
+	public void register(final MenuContribution contribution) {
 		contributions.put(contribution.getApplication(), contribution);
 	}
 }

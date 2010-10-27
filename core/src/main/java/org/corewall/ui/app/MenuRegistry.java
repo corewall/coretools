@@ -19,7 +19,7 @@ public interface MenuRegistry {
 	 *            the application.
 	 * @return the immutable list of contributions.
 	 */
-	ImmutableList<MenuContribution<?>> getMenuContributions(String application);
+	ImmutableList<MenuContribution> getMenuContributions(String application);
 
 	/**
 	 * Registers a menu contribution.
@@ -27,5 +27,5 @@ public interface MenuRegistry {
 	 * @param contribution
 	 *            the contribution.
 	 */
-	void register(MenuContribution<?> contribution);
+	void register(MenuContribution contribution);
 }
