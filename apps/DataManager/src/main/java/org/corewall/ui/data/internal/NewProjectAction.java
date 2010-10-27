@@ -1,10 +1,14 @@
 package org.corewall.ui.data.internal;
 
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 import javax.swing.AbstractAction;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 
 import org.corewall.Platform;
 import org.corewall.ProjectManager;
@@ -18,13 +22,20 @@ import org.corewall.ui.data.DataManager;
  * @author Josh Reed (jareed@andrill.org)
  */
 public class NewProjectAction extends AbstractAction {
+	/**
+	 * The command identifier to use in the ActionMap.
+	 */
+	public static final String COMMAND = "project/new";
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Create a new NewProjectAction.
 	 */
 	public NewProjectAction() {
-		super("New...");
+		super("New Project");
+		putValue(ACCELERATOR_KEY, keystroke(KeyEvent.VK_N, InputEvent.SHIFT_DOWN_MASK));
+		putValue(SHORT_DESCRIPTION, "Create a New Project");
+		putValue(ACTION_COMMAND_KEY, COMMAND);
 	}
 
 	@Override
@@ -55,5 +66,13 @@ public class NewProjectAction extends AbstractAction {
 			}
 			app.refresh();
 		}
+	}
+
+	protected KeyStroke keystroke(final int key) {
+		return KeyStroke.getKeyStroke(key, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask());
+	}
+
+	protected KeyStroke keystroke(final int key, final int modifier) {
+		return KeyStroke.getKeyStroke(key, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() | modifier);
 	}
 }
