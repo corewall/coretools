@@ -34,7 +34,7 @@ public class MenuBuilder {
 	private final String application;
 	private JMenu currentMenu = null;
 	private String currentMenuName = null;
-	private boolean lastHadEntries = false;
+	private boolean addSeparatorBefore = false;
 	private final List<JMenu> menus;
 	private final MenuRegistry registry;
 
@@ -89,8 +89,11 @@ public class MenuBuilder {
 		String id = menu(currentMenuName, name);
 		for (MenuContribution c : registry.getMenuContributions(application)) {
 			if (c.getMenu().equalsIgnoreCase(id)) {
+				if (addSeparatorBefore) {
+					currentMenu.addSeparator();
+				}
+				addSeparatorBefore = false;
 				currentMenu.add(new JMenuItem(c.getAction()));
-				lastHadEntries = true;
 			}
 		}
 		return this;
@@ -102,10 +105,7 @@ public class MenuBuilder {
 	 * @return the menu builder instance as a convenience.
 	 */
 	public MenuBuilder separator() {
-		if (lastHadEntries) {
-			currentMenu.addSeparator();
-		}
-		lastHadEntries = false;
+		addSeparatorBefore = true;
 		return this;
 	}
 }

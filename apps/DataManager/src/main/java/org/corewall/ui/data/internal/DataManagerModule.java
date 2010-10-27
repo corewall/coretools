@@ -23,8 +23,5 @@ public class DataManagerModule extends AbstractModule {
 		menu.addBinding().toInstance(
 				new DefaultMenuContribution(DataManager.APPLICATION_ID, MenuBuilder.menu("File", "New"),
 						new NewProjectAction()));
-		menu.addBinding().toInstance(
-				new DefaultMenuContribution(DataManager.APPLICATION_ID, MenuBuilder.menu("File", "Other"),
-						new NewProjectAction()));
 	}
 }
