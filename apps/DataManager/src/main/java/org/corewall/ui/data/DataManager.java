@@ -1,19 +1,14 @@
 package org.corewall.ui.data;
 
 import java.awt.BorderLayout;
-import java.awt.Toolkit;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
 
+import javax.swing.Action;
 import javax.swing.ActionMap;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
-import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -21,8 +16,10 @@ import javax.swing.UnsupportedLookAndFeelException;
 import org.corewall.Platform;
 import org.corewall.ProjectManager;
 import org.corewall.data.Project;
+import org.corewall.ui.app.MenuBuilder;
+import org.corewall.ui.app.MenuContribution;
+import org.corewall.ui.app.MenuRegistry;
 import org.corewall.ui.data.internal.DataManagerModule;
-import org.corewall.ui.data.internal.NewProjectAction;
 import org.corewall.ui.data.internal.ProjectPanel;
 import org.corewall.ui.data.internal.WelcomePanel;
 import org.slf4j.Logger;
@@ -45,6 +42,9 @@ import com.google.common.collect.ImmutableList;
  * @author Josh Reed (jareed@andrill.org)
  */
 public class DataManager implements SourceListSelectionListener {
+	/**
+	 * The DataManager application id.
+	 */
 	public static final String APPLICATION_ID = "DataManager";
 	protected static DataManager INSTANCE;
 	protected static final Logger LOG = LoggerFactory.getLogger(DataManager.class);
@@ -179,19 +179,29 @@ public class DataManager implements SourceListSelectionListener {
 		split.setDividerLocation(200);
 		frame.getContentPane().add(split, BorderLayout.CENTER);
 
-		// setup the menu
-		menu = new JMenuBar();
+		// build our menus
+		// @formatter:off
+		menu = new MenuBuilder(APPLICATION_ID)
+			.menu("File")
+				.section("New")
+				.section("Open")
+				.separator()
+				.section("Import")
+				.section("Export")
+				.separator()
+				.section("Other")
+		.build(new JMenuBar());
+		// @formatter:on
 		frame.setJMenuBar(menu);
-		JMenu fileMenu = new JMenu("File");
-		{
-			NewProjectAction action = new NewProjectAction();
-			JMenuItem item = new JMenuItem(action);
-			item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, Toolkit.getDefaultToolkit()
-					.getMenuShortcutKeyMask()));
-			fileMenu.add(item);
-			actionMap.put("project/new", action);
+
+		// setup action map
+		for (MenuContribution c : Platform.getService(MenuRegistry.class).getMenuContributions(APPLICATION_ID)) {
+			Action action = c.getAction();
+			String link = (String) action.getValue(Action.ACTION_COMMAND_KEY);
+			if (link != null) {
+				getActionMap().put(link, action);
+			}
 		}
-		menu.add(fileMenu);
 
 		// create our welcome screen
 		welcomePanel = new WelcomePanel();
