@@ -21,6 +21,9 @@ import com.lowagie.text.pdf.PdfWriter;
  */
 public class PDFTest {
 
+	/**
+	 * Start the platform.
+	 */
 	@BeforeClass
 	public static void startPlatform() {
 		Platform.start();

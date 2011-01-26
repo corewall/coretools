@@ -14,7 +14,26 @@ public interface Feedback {
 	 * The feedback type.
 	 */
 	public enum Type {
-		SELECT, CREATE, MOVE, RESIZE, DELETE
+		/**
+		 * Select-type feedback.
+		 */
+		SELECT,
+		/**
+		 * Create-type feedback.
+		 */
+		CREATE,
+		/**
+		 * Move-type feedback.
+		 */
+		MOVE,
+		/**
+		 * Resize-type feedback.
+		 */
+		RESIZE,
+		/**
+		 * Delete-type feedback.
+		 */
+		DELETE
 	}
 
 	/**

@@ -14,7 +14,22 @@ public interface EventPolicy {
 	 * The event type.
 	 */
 	public enum Type {
-		CREATE, MOVE, RESIZE, KEY
+		/**
+		 * Create-type events.
+		 */
+		CREATE,
+		/**
+		 * Move-type events.
+		 */
+		MOVE,
+		/**
+		 * Resize-type events.
+		 */
+		RESIZE,
+		/**
+		 * Key events.
+		 */
+		KEY
 	}
 
 	/**

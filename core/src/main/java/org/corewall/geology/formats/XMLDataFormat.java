@@ -88,7 +88,6 @@ public class XMLDataFormat {
 	}
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(XMLDataFormat.class);
-
 	private static final DecimalFormat NUM = new DecimalFormat("0.####");
 
 	protected static double parseDouble(final String str, final double defaultValue) {
@@ -114,12 +113,12 @@ public class XMLDataFormat {
 	}
 
 	public List<XYDataSet> getModels(final URL url) throws IOException {
-		// TODO Auto-generated method stub
+		// TODO: implement
 		return null;
 	}
 
 	public List<Map<String, String>> getRaw(final URL url) throws IOException {
-		// TODO Auto-generated method stub
+		// TODO: implement
 		return null;
 	}
 }

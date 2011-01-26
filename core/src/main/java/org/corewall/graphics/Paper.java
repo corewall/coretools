@@ -14,22 +14,69 @@ public class Paper {
 	private static Map<String, Paper> PAGES = new HashMap<String, Paper>();
 	private static final int DEFAULT_MARGIN = 36; // 0.5"
 
+	/**
+	 * A0 size paper.
+	 */
 	public static final Paper A0 = new Paper(2384, 3371, DEFAULT_MARGIN);
+	/**
+	 * A1 size paper.
+	 */
 	public static final Paper A1 = new Paper(1685, 2384, DEFAULT_MARGIN);
+	/**
+	 * A2 size paper.
+	 */
 	public static final Paper A2 = new Paper(1190, 1684, DEFAULT_MARGIN);
+	/**
+	 * A3 size paper.
+	 */
 	public static final Paper A3 = new Paper(842, 1190, DEFAULT_MARGIN);
+	/**
+	 * A4 size paper.
+	 */
 	public static final Paper A4 = new Paper(595, 842, DEFAULT_MARGIN);
+	/**
+	 * A5 size paper.
+	 */
 	public static final Paper A5 = new Paper(420, 595, DEFAULT_MARGIN);
+	/**
+	 * B4 size paper.
+	 */
 	public static final Paper B4 = new Paper(729, 1032, DEFAULT_MARGIN);
+	/**
+	 * B5 size paper.
+	 */
 	public static final Paper B5 = new Paper(516, 729, DEFAULT_MARGIN);
-
+	/**
+	 * Executive size paper.
+	 */
 	public static final Paper EXECUTIVE = new Paper(540, 720, DEFAULT_MARGIN);
+	/**
+	 * Folio size paper.
+	 */
 	public static final Paper FOLIO = new Paper(612, 936, DEFAULT_MARGIN);
+	/**
+	 * Ledger size paper.
+	 */
 	public static final Paper LEDGER = new Paper(1224, 792, DEFAULT_MARGIN);
+	/**
+	 * Legal size paper.
+	 */
 	public static final Paper LEGAL = new Paper(612, 1008, DEFAULT_MARGIN);
+	/**
+	 * Letter size paper.
+	 */
 	public static final Paper LETTER = new Paper(612, 792, DEFAULT_MARGIN);
+	/**
+	 * Quarto size paper.
+	 */
 	public static final Paper QUARTO = new Paper(610, 780, DEFAULT_MARGIN);
+	/**
+	 * Statement size paper.
+	 */
 	public static final Paper STATEMENT = new Paper(396, 612, DEFAULT_MARGIN);
+	/**
+	 * Tabloid size paper.
+	 */
 	public static final Paper TABLOID = new Paper(792, 1224, DEFAULT_MARGIN);
 
 	static {
@@ -85,6 +132,11 @@ public class Paper {
 		}
 	}
 
+	/**
+	 * Gets the default paper size based on the current locale.
+	 * 
+	 * @return the default paper size.
+	 */
 	public static Paper getDefault() {
 		final String country = Locale.getDefault().getCountry();
 		if ("US".equals(country) || "CA".equals(country)) {
@@ -98,7 +150,8 @@ public class Paper {
 	private final int width, height;
 
 	/**
-	 * Create a new page with the specified width, height, and uniform margin all measured in points.
+	 * Create a new page with the specified width, height, and uniform margin
+	 * all measured in points.
 	 * 
 	 * @param width
 	 *            the width.
@@ -117,7 +170,8 @@ public class Paper {
 	}
 
 	/**
-	 * Create a new page with the specified width, height, and margins all measured in points.
+	 * Create a new page with the specified width, height, and margins all
+	 * measured in points.
 	 * 
 	 * @param width
 	 *            the width.
@@ -133,7 +187,7 @@ public class Paper {
 	 *            the top margin.
 	 */
 	public Paper(final int width, final int height, final int printableWidth, final int printableHeight,
-	        final int left, final int top) {
+			final int left, final int top) {
 		this.width = width;
 		this.height = height;
 		px = left;
