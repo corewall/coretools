@@ -14,7 +14,22 @@ public class SceneMouseEvent extends SceneEvent {
 	 * The mouse button of the event.
 	 */
 	public enum Button {
-		BUTTON1, BUTTON2, BUTTON3, NO_BUTTON
+		/**
+		 * Left mouse button 1.
+		 */
+		BUTTON1,
+		/**
+		 * Right mouse button 2.
+		 */
+		BUTTON2,
+		/**
+		 * Middle mouse button 3.
+		 */
+		BUTTON3,
+		/**
+		 * No mouse button.
+		 */
+		NO_BUTTON
 	}
 
 	protected Button button;

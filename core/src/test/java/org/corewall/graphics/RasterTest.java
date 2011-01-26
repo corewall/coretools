@@ -13,6 +13,10 @@ import org.junit.Test;
  * @author Josh Reed (jareed@andrill.org)
  */
 public class RasterTest {
+
+	/**
+	 * Start the platform.
+	 */
 	@BeforeClass
 	public static void startPlatform() {
 		Platform.start();

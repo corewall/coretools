@@ -14,6 +14,9 @@ import org.junit.Test;
  */
 public class SVGTest {
 
+	/**
+	 * Start the platform.
+	 */
 	@BeforeClass
 	public static void startPlatform() {
 		Platform.start();

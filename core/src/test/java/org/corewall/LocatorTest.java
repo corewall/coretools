@@ -21,6 +21,9 @@ import org.junit.Test;
  */
 public class LocatorTest {
 
+	/**
+	 * Start the platform.
+	 */
 	@BeforeClass
 	public static void startPlatform() {
 		Platform.start();
@@ -38,6 +41,9 @@ public class LocatorTest {
 		}
 	}
 
+	/**
+	 * Setup before each test.
+	 */
 	@Before
 	public void setUp() {
 		locator = Platform.getService(Locator.class);
