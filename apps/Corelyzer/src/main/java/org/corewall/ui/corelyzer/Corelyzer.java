@@ -12,6 +12,11 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import org.corewall.Platform;
+import org.corewall.scene.DefaultScene;
+import org.corewall.scene.Orientation;
+import org.corewall.scene.Origin;
+import org.corewall.scene.Scene;
+import org.corewall.ui.FreeformPanel;
 import org.corewall.ui.app.MenuBuilder;
 import org.corewall.ui.app.MenuContribution;
 import org.corewall.ui.app.MenuRegistry;
@@ -85,6 +90,8 @@ public class Corelyzer {
 	protected JScrollPane contentArea;
 	protected JFrame frame;
 	protected JMenuBar menu;
+	protected FreeformPanel panel;
+	protected Scene scene;
 
 	/**
 	 * Create the application.
@@ -148,5 +155,10 @@ public class Corelyzer {
 				getActionMap().put(link, action);
 			}
 		}
+
+		// add our freeform scene panel
+		scene = new DefaultScene(Origin.TOP);
+		panel = new FreeformPanel(scene, Orientation.HORIZONTAL);
+		frame.getContentPane().add(panel, BorderLayout.CENTER);
 	}
 }
