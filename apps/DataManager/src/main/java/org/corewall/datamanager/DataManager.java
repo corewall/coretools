@@ -1,4 +1,4 @@
-package org.corewall.ui.data;
+package org.corewall.datamanager;
 
 import java.awt.BorderLayout;
 
@@ -16,12 +16,12 @@ import javax.swing.UnsupportedLookAndFeelException;
 import org.corewall.Platform;
 import org.corewall.ProjectManager;
 import org.corewall.data.Project;
+import org.corewall.datamanager.internal.DataManagerModule;
+import org.corewall.datamanager.internal.ProjectPanel;
+import org.corewall.datamanager.internal.WelcomePanel;
 import org.corewall.ui.app.MenuBuilder;
 import org.corewall.ui.app.MenuContribution;
 import org.corewall.ui.app.MenuRegistry;
-import org.corewall.ui.data.internal.DataManagerModule;
-import org.corewall.ui.data.internal.ProjectPanel;
-import org.corewall.ui.data.internal.WelcomePanel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

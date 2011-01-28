@@ -1,9 +1,9 @@
-package org.corewall.ui.data.internal;
+package org.corewall.datamanager.internal;
 
+import org.corewall.datamanager.DataManager;
 import org.corewall.ui.app.DefaultMenuContribution;
 import org.corewall.ui.app.MenuBuilder;
 import org.corewall.ui.app.MenuContribution;
-import org.corewall.ui.data.DataManager;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.multibindings.Multibinder;

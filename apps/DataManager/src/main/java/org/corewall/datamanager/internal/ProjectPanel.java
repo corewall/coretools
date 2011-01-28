@@ -1,4 +1,4 @@
-package org.corewall.ui.data.internal;
+package org.corewall.datamanager.internal;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
