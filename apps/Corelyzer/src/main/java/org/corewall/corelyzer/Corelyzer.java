@@ -1,4 +1,4 @@
-package org.corewall.ui.corelyzer;
+package org.corewall.corelyzer;
 
 import java.awt.BorderLayout;
 
@@ -12,6 +12,8 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import org.corewall.Platform;
+import org.corewall.corelyzer.internal.CorelyzerModule;
+import org.corewall.geology.tracks.RulerTrack;
 import org.corewall.scene.DefaultScene;
 import org.corewall.scene.Orientation;
 import org.corewall.scene.Origin;
@@ -20,7 +22,6 @@ import org.corewall.ui.FreeformPanel;
 import org.corewall.ui.app.MenuBuilder;
 import org.corewall.ui.app.MenuContribution;
 import org.corewall.ui.app.MenuRegistry;
-import org.corewall.ui.corelyzer.internal.CorelyzerModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -160,5 +161,7 @@ public class Corelyzer {
 		scene = new DefaultScene(Origin.TOP);
 		panel = new FreeformPanel(scene, Orientation.HORIZONTAL);
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
+
+		scene.addTrack(new RulerTrack(), null);
 	}
 }

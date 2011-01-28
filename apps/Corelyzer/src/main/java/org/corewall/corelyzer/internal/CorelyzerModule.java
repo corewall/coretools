@@ -1,4 +1,4 @@
-package org.corewall.ui.corelyzer.internal;
+package org.corewall.corelyzer.internal;
 
 import org.corewall.ui.app.MenuContribution;
 
