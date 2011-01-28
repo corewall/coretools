@@ -1,0 +1,17 @@
+version = '0.0.1-SNAPSHOT'
+manifest.mainAttributes(
+	'Implementation-Title': 'Correlator',
+	'Implementation-Version': version
+)
+
+dependencies {
+	compile project(':core')
+	compile 'com.explodingpixels:mac_widgets:0.9.6-SNAPSHOT'
+	compile 'com.miglayout:miglayout:3.7.3.1:swing'
+}
+
+task release(dependsOn: configurations.default.buildArtifacts, type: Copy) {
+    into "$buildDir/release"
+    from configurations.default
+    from configurations.default.allArtifactFiles
+}

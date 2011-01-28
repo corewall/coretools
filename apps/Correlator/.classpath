@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER" exported="true"/>
+	<classpathentry kind="src" path="/core" exported="true"/>
+	<classpathentry kind="lib" path="/Users/jareed/.gradle/cache/com.explodingpixels/mac_widgets/jars/mac_widgets-0.9.6-SNAPSHOT.jar" exported="true"/>
+	<classpathentry kind="lib" path="/Users/jareed/.gradle/cache/com.miglayout/miglayout/jars/miglayout-3.7.3.1-swing.jar" exported="true"/>
+	<classpathentry sourcepath="/Users/jareed/.gradle/cache/com.jgoodies/forms/sources/forms-1.2.1-sources.jar" kind="lib" path="/Users/jareed/.gradle/cache/com.jgoodies/forms/jars/forms-1.2.1.jar" exported="true"/>
+</classpath>
