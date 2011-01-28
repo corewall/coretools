@@ -30,7 +30,7 @@ import com.google.inject.internal.Maps;
  */
 public class DefaultScene implements Scene {
 	private static final String BORDERS_PROP = "borders";
-	private static final String DEFAULT_BORDERS = Boolean.toString(true);
+	private static final String DEFAULT_BORDERS = Boolean.toString(false);
 	private static final String DEFAULT_ORIENTATION = Orientation.VERTICAL.toString();
 	private static final String DEFAULT_ORIGIN = Origin.TOP.toString();
 	private static final String DEFAULT_SCALE = "1";
