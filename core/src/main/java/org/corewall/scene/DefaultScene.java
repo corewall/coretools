@@ -360,9 +360,8 @@ public class DefaultScene implements Scene {
 		for (Track t : tracks) {
 			int w = layout.get(t).width;
 			Rectangle bounds = new Rectangle(x, (int) Math.floor(r.getY()), w, (int) Math.ceil(r.getHeight()));
-			graphics.setClip(new Rectangle(x - 1, (int)
-					Math.floor(r.getY()) - 1, w + 2, (int) Math.ceil(r
-							.getHeight()) + 2));
+			graphics.setClip(new Rectangle(x - 1, (int) Math.floor(r.getY()) - 1, w + 2,
+					(int) Math.ceil(r.getHeight()) + 2));
 			graphics.pushState();
 			t.renderContents(graphics, bounds);
 			graphics.popState();

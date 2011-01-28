@@ -65,7 +65,8 @@ public class RulerTrack extends AbstractTrack<Model> {
 		for (double i = Math.floor(start / labelStep) * labelStep; i < end; i += labelStep) {
 			graphics.drawLine(bounds.getMinX(), toScreen(i), bounds.getMinX() + 10, toScreen(i));
 			graphics.drawLine(bounds.getMaxX() - 10, toScreen(i), bounds.getMaxX(), toScreen(i));
-			graphics.drawStringCenter(bounds.getMinX(), toScreen(i) - labelStep / 2, bounds.getWidth(), labelStep, FONT, f.format(i));
+			graphics.drawStringCenter(bounds.getMinX(), toScreen(i) - labelStep / 2, bounds.getWidth(), labelStep,
+					FONT, f.format(i));
 		}
 
 		// draw the edges
